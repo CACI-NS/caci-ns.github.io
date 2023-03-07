@@ -3,7 +3,11 @@ safe: true
 source: /
 incremental: false
 highlighter: rouge
-theme: slate
+remote_theme: pages-themes/slate@v0.2.0
+title: Test title
+description: A short description of your site's purpose
+plugins:
+- jekyll-remote-theme
 gist:
   noscript: false
 kramdown:
