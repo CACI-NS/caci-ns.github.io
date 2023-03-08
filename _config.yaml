@@ -1,15 +1,14 @@
+# Overall settings
 lsi: false
 safe: true
 source: /
-incremental: false
-highlighter: rouge
-remote_theme: pages-themes/slate@v0.2.0
-title: Test title
-description: A short description of your site's purpose
-plugins:
-- jekyll-remote-theme
-gist:
-  noscript: false
-kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
+
+# Site settings
+title: CACI Network Services Blog
+author:
+ name: CACI Network Services
+ email: info@caci.co.uk
+description: "Respond to challenges before they arise with our expert led Network and Nnfrastructure consultancy services"
+
+# Build settings
+remote_theme: jekyll/minima
