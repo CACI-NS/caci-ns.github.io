@@ -1,8 +1,4 @@
 # Overall settings
-lsi: false
-safe: true
-source: /
-incremental: false
 highlighter: rouge
 gist:
   noscript: false
@@ -11,11 +7,13 @@ kramdown:
   syntax_highlighter: rouge/
 
 # Site settings
-title: CACI Network Services Blog
-author:
- name: CACI Network Services
- email: info@caci.co.uk
+title: CACI NS Blog
+email: info@caci.co.uk
 description: "Respond to challenges before they arise with our expert led Network and Infrastructure consultancy services"
+github_username: caci-ns
 
 # Build settings
-remote_theme: jekyll/minima
+theme: minima
+show_excerpts: true
+plugins:
+  - jekyll-feed
