@@ -1,5 +1,5 @@
 # Site settings
-baseurl: '/'
+baseurl: 'caci-ns.github.io'
 url: 'https://caci-ns.github.io'
 title: CACI NS Blog
 email: info@caci.co.uk
