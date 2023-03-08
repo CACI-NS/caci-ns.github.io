@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What are CI/CD Pipelines?"
-date: 2023-08-08 22:48:00 -0000
+date: 2023-03-08 22:48:00 -0000
 categories: DevOps
 ---
 
