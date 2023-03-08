@@ -12,6 +12,8 @@ email: info@caci.co.uk
 description: "Respond to challenges before they arise with our expert led Network and Infrastructure consultancy services"
 github_username: caci-ns
 twitter_username: nscaci
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
 
 # Build settings
 theme: minima
