@@ -1,6 +1,7 @@
 ---
 layout: post
-title: What are CI/CD Pipelines?
+title: "What are CI/CD Pipelines?"
+date: 2023-08-08
 tags: ci/cd pipelines devops cloud
 categories: network devops
 ---
