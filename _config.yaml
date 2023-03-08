@@ -4,6 +4,7 @@ url: ""
 title: CACI NS Blog
 email: info@caci.co.uk
 description: "Experts in Networks, Cloud, Infrastructure and DevOps"
+show_excerpts: true
 github_username: caci-ns
 twitter_username: nscaci
 
