@@ -1,15 +1,11 @@
 # Site settings
-baseurl: "caci-ns.github.io"
+baseurl: ""
 url: ""
 title: CACI NS Blog
 email: info@caci.co.uk
 description: "Experts in Networks, Cloud, Infrastructure and DevOps"
 github_username: caci-ns
 twitter_username: nscaci
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-permalink: /:collection/:year-:month-:day-:title:output_ext
-show_excerpts: true
 
 # Build settings
 theme: minima
