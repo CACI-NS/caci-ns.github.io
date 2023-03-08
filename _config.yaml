@@ -9,7 +9,7 @@ kramdown:
 # Site settings
 title: CACI NS Blog
 email: info@caci.co.uk
-description: "Respond to challenges before they arise with our expert led Network and Infrastructure consultancy services"
+description: "Experts in Networks, Cloud, Infrastructure and DevOps"
 github_username: caci-ns
 twitter_username: nscaci
 paginate: 5 # amount of posts to show
