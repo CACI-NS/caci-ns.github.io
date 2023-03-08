@@ -2,7 +2,7 @@
 layout: post
 title: "What are CI/CD Pipelines?"
 date: 2023-08-08 22:48:00 -0000
-categories: network devops cloud cicd
+categories: DevOps
 ---
 
 CI/CD (Continuous Integration/Continuous Deployment) pipelines are a modern DevOps practice that automates the process of packaging, testing, and deploying code in small increments. This practice has made software development agile and reliable, and it holds the same promise for networking as more environments transition to the infrastructure-as-code (IaC) mode. In network engineering, CI/CD pipelines help implement network changes quickly and push them into production with speed and accuracy.
