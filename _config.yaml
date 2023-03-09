@@ -1,7 +1,7 @@
 # Site settings
 baseurl: ""
 url: "https://caci-ns.github.io"
-title: CACI NS Blog
+title: CACI/CD
 email: info@caci.co.uk
 description: "Experts in Networks, Cloud, IT and DevOps"
 show_excerpts: true
