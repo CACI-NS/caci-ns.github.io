@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Choosing between DevOps versus ITIL"
-date: 2023-08-07 13:41:00 -0000
+date: 2023-03-07 13:41:00 -0000
 categories: itsm
 ---
 
