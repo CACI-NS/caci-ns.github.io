@@ -6,7 +6,7 @@ permalink: /code/
 
 {% for repo in site.github.public_repositories %}
 
-{% if repo.fork == false %}
+{% if repo.fork == false and repo.name != "CACI-NS" and repo.name != "caci-ns.github.io" %}
 
 ## [{{ repo.name }}]({{ repo.html_url }})
 
