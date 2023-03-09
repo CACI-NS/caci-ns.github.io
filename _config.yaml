@@ -10,6 +10,7 @@ show_excerpts: true
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Social Media settings
 github_username: caci-ns
