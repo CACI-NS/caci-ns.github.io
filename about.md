@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+permalink: /about/
 ---
 
 Welcome to the CACI Network Services blog! We are a team of experts in IT Infrastructure, Network Architecture, Networking Engineering, Network Automation, Cloud, DevOps and much more. Our mission is to provide our Clients with valuable insights into the latest trends and technologies in IT Infrastructure, Networking, Cloud and DevOps.
