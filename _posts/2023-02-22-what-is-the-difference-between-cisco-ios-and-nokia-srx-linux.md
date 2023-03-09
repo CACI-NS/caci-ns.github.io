@@ -5,7 +5,7 @@ date: 2023-02-22 13:13:00 -0000
 categories: networking
 ---
 
-Cisco IOS and Nokia SR Linux are two popular operating systems used in networking. While both have their strengths, they differ in several ways.
+Cisco IOS and Nokia SR Linux are two popular operating systems used in networking. While both have their strengths, they differ in several ways - SR Linux is chiefly a microservices-led, Containerised Network Operating System (NOS), whereas Cisco IOS is a monolithic NOS; with Cisco having made enhancements to their approach in the NOS under IOS-XR, IOS-XE and NX-OS.
 
 # What's this SR Linux you speak of?
 One of the main differences between Cisco IOS and Nokia SR Linux is their architecture. Cisco IOS is a monolithic operating system, meaning that all features are integrated into a single image. This can make it difficult to upgrade or modify specific features without affecting the entire system. In contrast, Nokia SR Linux is a modular operating system, which allows for more flexibility in upgrading or modifying specific features without affecting the entire system.
