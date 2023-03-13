@@ -40,7 +40,7 @@ layout: default
   <h2>Categories</h2>
   <ul>
   {% for cat in site.categories %}
-    <li>{{ cat }}</li>
+    <li>{% capture cat_name %}{{ cat | first }}{% endcapture %}</li>
   {% endfor %}
   </ul>
 </div>
