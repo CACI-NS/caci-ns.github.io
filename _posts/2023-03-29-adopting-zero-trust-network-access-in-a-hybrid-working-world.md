@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Adopting Zero Trust Network Access in a hybrid working world"
-date: 2023-03-29 10:00:00 -0000
+date: 2023-03-29 10:01:00 -0000
 categories: networking
 ---
 
