@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rethinking Network Management through Network as a Service"
-date: 2023-05-03 09:32:00 -0000
+date: 2023-05-03 08:32:00 -0000
 categories: networking
 ---
 
