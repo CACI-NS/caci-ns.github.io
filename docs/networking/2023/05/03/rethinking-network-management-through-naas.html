@@ -82,7 +82,7 @@
 
 <h3>Another "as a Service"</h3>
 
-<p><em>"Oh no not another 'as a Service' buzzword-fest..."</em> I hear you say, and yes, in some respects, you would be sadly correct. However, Network as a Service (NaaS) has its roots firmly in the overall Cloudification trend found elsewhere within the wider IT and Cloud industry; only now having perculated down towards the steadfast realms of the hardware-centric Network Industry. At its core, NaaS is about the following differentiators from other more assset-centric approaches:</p>
+<p><em>"Oh no not another 'as a Service' buzzword-fest..."</em> I hear you say, and yes, in some respects, you would be sadly correct. However, Network as a Service (NaaS) has its roots firmly in the overall Cloudification trend found elsewhere within the wider IT and Cloud industry; only now having percolated down towards the steadfast realms of the hardware-centric Network Industry. At its core, NaaS is about the following differentiators from other more asset-centric approaches:</p>
 
 <ul>
 <li>Consumption of Network Infrastructure through flexible OpEx subscription-based models</li>
@@ -93,7 +93,7 @@
 
 <p>At its core, NaaS is more an Operational Model than it is a Consumption Pattern; NaaS is chiefly about realigning thinking towards that of the upper-layers of the OSI Model, in remembering that the chief objective of the Network is to solidly underpin an ever-more complex soup of interconnected Middleware, Microservices, PaaS and SaaS Dataverse ecosystems which eventually combine toward the aspiration of the modern <a href="https://12factor.net">Twelve-Factor App Manifesto</a>.</p>
 
-<h1>Observability versus Monitoring</h1>
+<h2>Observability versus Monitoring</h2>
 
 <p>Before we can dive into NaaS, we need to understand the difference in Observability versus Monitoring - or that is, focus on the Three Pillars of Observability, namely:</p>
 
@@ -112,21 +112,21 @@
 </ul></li>
 <li>Metrics - The performance of the Infrastructure-aligned components within the system, as typically observed over a time-graphed basis
 <ul>
-<li>An example might be a CPU Utilisation monitor, showin that the Processor has crept up to 78% utilisation over the last ten minutes</li>
+<li>An example might be a CPU Utilisation monitor, showing that the Processor has crept up to 78% utilisation over the last ten minutes</li>
 </ul></li>
-<li>Traces - The ability to debug low-level sub-component and function activities to derrive context of whether a piece of Software Code is working as prescribed
+<li>Traces - The ability to debug low-level sub-component and function activities to derive context of whether a piece of Software Code is working as prescribed
 <ul>
 <li>An example might be a Trace within a Python Function, showing that the error being caused by Netmiko is because a SSH Session to a Cisco Router dropped out at v1.99 instead of expected SSHv2</li>
 </ul></li>
 </ul>
 
-<p>These differ somewhat from traditional Monitoring approaches - such as Network Management Systems (NMS), which have typically only focussed around the <em>Metrics</em> pillar, and superficially referenced the other two pillars. What Observability has done to traditional Monitoring is comparable to the movement happening from the NMS to the NaaS arena; effectively to move the management concern "up the stack", and focus on higher-level abstraction objectives, and away from lower-level hardwared-led concerns.</p>
+<p>These differ somewhat from traditional Monitoring approaches - such as Network Management Systems (NMS), which have typically only focussed around the <em>Metrics</em> pillar, and superficially referenced the other two pillars. What Observability has done to traditional Monitoring is comparable to the movement happening from the NMS to the NaaS arena; effectively to move the management concern "up the stack", and focus on higher-level abstraction objectives, and away from lower-level hardware-led concerns.</p>
 
 <h2>NaaS as an approach</h2>
 
 <p>NaaS is ultimately a conceptual change in <em>consumption</em> of the Network as a going concern; rather than worrying about the Network Layer as a <em>discrete</em> concern, the Network is positioned as part of the wider Technology Stack - often up to and including the Application Layer - that is services. While this may sound trivial, it is a huge step change in how Enterprise and Service Provider (SP) Networks are operated when contrasted against the current de facto practices. NaaS can be simplified as being a "Cloud model" - not in the sense that it has to be operated and hosted within Public CSP Cloud Service Providers - but more in the ideas associated around Cloud Operational Models, including Service Elasticity; OpEx-led Billing; Horizontal Scaling and API-first integrations into wider ecosystem concerns.</p>
 
-<p>The main benefit of NaaS is flexibilty and adaptability to changing Technical Stack conditions; where a legacy NMS-led approach might falsely report "All clear; the Network is fine" because <em>Metrics</em> are clean and green, a newer NaaS-led approach might instead report "Problems detected in latency experienced by the Application due to MTU Clipping" because the upper-level <em>Traces</em> and <em>Logs</em> collectively indicate an issue to a latency-sensitive Service Bus-based Application. The true strength of NaaS lies in it's alignment of the Network Layer to Cloud, DevOps and Observability practices to provide the ability to monitor, manage and track Network as if it were just another IaaS or PaaS component of the overall Application Stack.</p>
+<p>The main benefit of NaaS is flexibility and adaptability to changing Technical Stack conditions; where a legacy NMS-led approach might falsely report "All clear; the Network is fine" because <em>Metrics</em> are clean and green, a newer NaaS-led approach might instead report "Problems detected in latency experienced by the Application due to MTU Clipping" because the upper-level <em>Traces</em> and <em>Logs</em> collectively indicate an issue to a latency-sensitive Service Bus-based Application. The true strength of NaaS lies in it's alignment of the Network Layer to Cloud, DevOps and Observability practices to provide the ability to monitor, manage and track Network as if it were just another IaaS or PaaS component of the overall Application Stack.</p>
 
 <h2>Interested in adding NaaS to your IaaS and PaaS?</h2>
 
