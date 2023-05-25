@@ -12,6 +12,12 @@ ul, ol {
 a:hover {
  font-weight: bold;
 }
+table {
+ margin: 0 1em 1em 1em;
+}
+th {
+ background-color: #ED1B2D;
+}
 .info {
  font-size: medium;
  color: #777;
