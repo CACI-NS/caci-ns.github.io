@@ -150,7 +150,12 @@ except Exception as e:
 # Output Blog Categories page HTML file
 categories_html = categories_template.render(posts=render_posts, categories=render_categories, year=year, page_title='Categories - CACI Network Services Blog')
 try:
- with open(OUTPUT_DIRECTORY + 'categories/index.html', 'w', encoding='utf-8') as file:
+ # Create new categories/ (SEO URL) folder
+ categories_page_directory = OUTPUT_DIRECTORY + '/categories'
+ # Create categories SEO directory
+ if not os.path.exists(page_page_directory):
+  os.mkdir(categories_page_directory)
+ with open(categories_page_directory + '/index.html', 'w', encoding='utf-8') as file:
   file.write(categories_html)
  # Successfully rendered Blog Categories page, output to log
  print('\nRendering Blog Categories HTML page... Done')
