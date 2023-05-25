@@ -153,7 +153,7 @@ try:
  # Create new categories/ (SEO URL) folder
  categories_page_directory = OUTPUT_DIRECTORY + 'categories'
  # Create categories SEO directory
- if not os.path.exists(page_page_directory):
+ if not os.path.exists(categories_page_directory):
   os.mkdir(categories_page_directory)
  with open(categories_page_directory + '/index.html', 'w', encoding='utf-8') as file:
   file.write(categories_html)
