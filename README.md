@@ -36,4 +36,4 @@ Other folders are generated based on the SSG generating the required folders for
 ## Support
 Contact these people for help:
 
-* [info@caci.co.uk](info@caci.co.uk)
+* [info@caci.co.uk](mailto:info@caci.co.uk)
