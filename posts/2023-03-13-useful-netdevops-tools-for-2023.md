@@ -18,13 +18,13 @@ Network Automation tools are essential for IT teams to execute complex tasks, in
 5. Git
 
 ### Terraform
-[Terraform](https://www.terraform.io) is an Automation and Orchestration tool, capable of building Cloud, Network and IT Infrastructure based on input in HCL (Hashicorp Configuration Language), which act as IaC (Infrastructure as Code) artifacts. Terraform is highly flexible and provides Modules and Providers for nearly every Network and Cloud vendor and technology going within the [Terraform Registry](https://registry.terraform.io).
+[Terraform](https://www.terraform.io) is an Automation and Orchestration tool, capable of building Cloud, Network and IT Infrastructure based on input in HCL (HashiCorp Configuration Language), which act as IaC (Infrastructure as Code) artefacts. Terraform is highly flexible and provides Modules and Providers for nearly every Network and Cloud vendor and technology going within the [Terraform Registry](https://registry.terraform.io).
 
 ### netlab
 [netlab](https://netsim-tools.readthedocs.io/en/latest/) is a Network Lab and Emulation tool, capable of taking IaC input definitions of a given Network Lab topology (such as YAML) and then having an emulated Lab of Network Device VM, Containers and Topologies to play with and perform learning or "What If?" scenarios upon.
 
 ### Batfish
-[Batfish](https://www.batfish.org) is a Network Configuration Analysis tool that is highly useful in performing "Waht If?" scenarios, and providing rapid ability to pre and post-test Network Changes and ensure the desired state is achieved.
+[Batfish](https://www.batfish.org) is a Network Configuration Analysis tool that is highly useful in performing "What If?" scenarios, and providing rapid ability to pre and post-test Network Changes and ensure the desired state is achieved.
 
 ### Cisco YANG Suite
 [Cisco YANG Suite](https://developer.cisco.com/yangsuite/) is a Learning and Development Suite, which provides a web-based User Interface to interact with an opinionated set of tools and plugins allowing you to learn, test, and adopt YANG Network Model programmable interfaces such as NETCONF, RESTCONF and gNMI others.
@@ -41,6 +41,6 @@ Although these didn't make our opinionated cut, these are certainly worth a ment
 - [Ansible](https://www.ansible.com/) - Automation and Orchestration Suite
 
 ## Wrapping up
-Network automation tools are essential for IT teams to execute complex tasks, including network configuration, security, and cost-efficient operations. These are just some of the best Network Automation tools available in 2023. Other notable mentions include Chef, Saltstack, Jenkins and Python for Network Automation - but of course, choosing the right tool depends on your organisation's specific needs and requirements.
+Network automation tools are essential for IT teams to execute complex tasks, including network configuration, security, and cost-efficient operations. These are just some of the best Network Automation tools available in 2023. Other notable mentions include Chef, SaltStack, Jenkins and Python for Network Automation - but of course, choosing the right tool depends on your organisation's specific needs and requirements.
 
-Why not [get in touch](https://www.caci.co.uk/contact/#contact-form) and see how we can help your business fully utilise some of these awesme Tools and Frameworks to accelerate your Digital Transformation journey.
+Why not [get in touch](https://www.caci.co.uk/contact/#contact-form) and see how we can help your business fully utilise some of these awesome Tools and Frameworks to accelerate your Digital Transformation journey.

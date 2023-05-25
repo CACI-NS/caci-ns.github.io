@@ -24,7 +24,7 @@ CI/CD pipelines also help improve the speed at which changes can be deployed to 
 
 In addition to these benefits, CI/CD pipelines also help improve security by allowing for automated security testing during the build process. This helps identify vulnerabilities early on and ensures that software is secure before it is deployed to production.
 
-Overall, CI/CD pipelines offer numerous benefits for software development teams including improved quality, collaboration, speed, and security. As such, they have become an essential tool for modern software development practices - and incresing Inrastructure provisioning is following this trend.
+Overall, CI/CD pipelines offer numerous benefits for software development teams including improved quality, collaboration, speed, and security. As such, they have become an essential tool for modern software development practices - and increasing Infrastructure provisioning is following this trend.
 
 ## What next?
 Implementing a CI/CD pipeline in network engineering helps automate build, test and deployment of applications. It bridges the gap between development and operations teams by automating processes that were previously manual. A well-designed CI/CD pipeline can help organizations achieve faster time-to-market with fewer errors while improving overall efficiency.
