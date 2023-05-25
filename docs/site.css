@@ -9,9 +9,6 @@ ul, ol {
  margin: 0 0.5em 0 1.6em;
  padding: 0;
 }
-a:hover {
- font-weight: bold;
-}
 table {
  margin: 0 1em 1em 1em;
 }
@@ -74,6 +71,9 @@ nav.transparent{
  /*max-width: 960px;*/
  margin: 0 auto;
  padding: 1em 0.2em 0 0.2em;
+}
+.visual a:hover {
+ font-weight: bold;
 }
 .card {
  border-top: none;
