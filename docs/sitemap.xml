@@ -5,6 +5,14 @@
   <changefreq>always</changefreq>
  </url>
  <url>
+  <loc>https://caci-ns.github.io/categories/</loc>
+  <changefreq>always</changefreq>
+ </url>
+ <url>
+  <loc>https://caci-ns.github.io//about/</loc>
+  <changefreq>always</changefreq>
+ </url>
+ <url>
   <loc>https://caci-ns.github.io/devops/2023/03/13/useful-netdevops-tools-for-2023.html</loc>
   <changefreq>always</changefreq>
  </url>
