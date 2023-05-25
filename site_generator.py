@@ -164,7 +164,7 @@ except Exception as e:
  print('\nRendering Blog Categories HTML page... Failed [' + str(e)[:60] + ']')
 
 # Output Blog Sitemap XML file
-sitemap_xml = sitemap_template.render(posts=render_posts)
+sitemap_xml = sitemap_template.render(posts=render_posts, pages=render_pages)
 try:
  with open(OUTPUT_DIRECTORY + 'sitemap.xml', 'w') as file:
   file.write(sitemap_xml)
