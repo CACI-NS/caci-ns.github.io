@@ -1,8 +1,9 @@
 ---
-layout: post
-title: "Rethinking Network Management through Network as a Service"
-date: 2023-05-03 08:32:00 -0000
-categories: networking
+title: Rethinking Network Management through Network as a Service
+slug: rethinking-network-management-through-naas
+date: 2023-05-03 08:32
+category: networking
+icon: sitemap
 ---
 
 Observability as a discipline distinct from Network Management is still in its infancy within the Network Engineering realm, with newer job titles such as Network Reliability Engineer (NRE) looking to extract the same organisational value that the more DevOps-aligned Site Reliability Engineer (SRE) provide to the more traditional SysAdmin space. Network as a Service (NaaS) is a new approach to Network Operations, which often distils down to two commonly accepted meanings:
@@ -12,7 +13,7 @@ Observability as a discipline distinct from Network Management is still in its i
 
 In this blog, we'll focus on the latter, and how the formation of a NaaS Team - or Squad - can improve Network Observability, and ultimately aid you in gleaning more insight, uptime and value out of your Network Infrastructure. We'll also touch on the former and the larger shift from Capital Expenditure (CapEx) to Operational Expenditure (OpEx) Lifecycle Management approaches, and what this means for shifts in the IT and Network Industry.
 
-# Another "as a Service"
+### Another "as a Service"
 _"Oh no not another 'as a Service' buzzword-fest..."_ I hear you say, and yes, in some respects, you would be sadly correct. However, Network as a Service (NaaS) has its roots firmly in the overall Cloudification trend found elsewhere within the wider IT and Cloud industry; only now having perculated down towards the steadfast realms of the hardware-centric Network Industry. At its core, NaaS is about the following differentiators from other more assset-centric approaches:
 
 * Consumption of Network Infrastructure through flexible OpEx subscription-based models
@@ -40,10 +41,10 @@ Each is distinct in its value and requirements in the art of Observability, but 
 
 These differ somewhat from traditional Monitoring approaches - such as Network Management Systems (NMS), which have typically only focussed around the _Metrics_ pillar, and superficially referenced the other two pillars. What Observability has done to traditional Monitoring is comparable to the movement happening from the NMS to the NaaS arena; effectively to move the management concern "up the stack", and focus on higher-level abstraction objectives, and away from lower-level hardwared-led concerns.
 
-# NaaS as an approach
+## NaaS as an approach
 NaaS is ultimately a conceptual change in _consumption_ of the Network as a going concern; rather than worrying about the Network Layer as a _discrete_ concern, the Network is positioned as part of the wider Technology Stack - often up to and including the Application Layer - that is services. While this may sound trivial, it is a huge step change in how Enterprise and Service Provider (SP) Networks are operated when contrasted against the current de facto practices. NaaS can be simplified as being a "Cloud model" - not in the sense that it has to be operated and hosted within Public CSP Cloud Service Providers - but more in the ideas associated around Cloud Operational Models, including Service Elasticity; OpEx-led Billing; Horizontal Scaling and API-first integrations into wider ecosystem concerns.
 
 The main benefit of NaaS is flexibilty and adaptability to changing Technical Stack conditions; where a legacy NMS-led approach might falsely report "All clear; the Network is fine" because _Metrics_ are clean and green, a newer NaaS-led approach might instead report "Problems detected in latency experienced by the Application due to MTU Clipping" because the upper-level _Traces_ and _Logs_ collectively indicate an issue to a latency-sensitive Service Bus-based Application. The true strength of NaaS lies in it's alignment of the Network Layer to Cloud, DevOps and Observability practices to provide the ability to monitor, manage and track Network as if it were just another IaaS or PaaS component of the overall Application Stack.
 
-# Interested in adding NaaS to your IaaS and PaaS?
+## Interested in adding NaaS to your IaaS and PaaS?
 With several years of Network Management and Enterprise Network Operations experience, [CACI Network Services](https://www.caci.co.uk/services/network-infrastructure-consulting/) are ideally positioned to help you make the transition from NMS to NaaS. [Contact us today](https://www.caci.co.uk/contact/#contact-form) and see how we can help your business fully shift towards the Observability promise as delivered by a NaaS approach to Network Operations.

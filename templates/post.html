@@ -1,0 +1,18 @@
+   {% extends "base.html" %}
+   {% block content %}
+   <header class="hero">
+    <div class="content">
+     <h1>{{ post.title }}</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    <p class="info">
+     <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.date }}</span>
+     <span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ post.category }}</span>
+     <span><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;<a href="https://twitter.com/caci_ns">Twitter</a></span>
+     <span><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/CACI-NS">GitHub</a></span>
+     <span><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<a href="mailto:info@caci.co.uk?subject=Help%20from%20Network%20Services">info@caci.co.uk</a></span>
+    </p>
+    {{ post.content|trim }}
+   </div>
+   {% endblock %}

@@ -1,0 +1,21 @@
+   {% extends "base.html" %}
+   {% block content %}
+   <header class="hero">
+    <div class="content">
+     <h1>CACI/CD Blog</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    <p>We are <a href="https://www.caci.co.uk/services/network-infrastructure-consulting/">CACI Network Services</a> and we are here to bring you interesting content in the world of DevOps, Network Automation, Cloud, Network Engineering and IT Service Management.</p>
+    {% for post in posts %}
+    <article class="card">
+     <i class="icon fa fa-{{ post.icon }}" aria-hidden="true"></i>
+     <header>
+      <h3><a href="/{{ post.category }}/{{ post.year }}/{{ post.month }}/{{ post.day }}/{{ post.slug }}.html">{{ post.title }}</a></h3>
+     </header>
+     <section>{{ post.summary }}</section>
+     <footer><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.date }}&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ post.category }}</footer>
+    </article>
+    {% endfor %}
+   </div>
+   {% endblock %}

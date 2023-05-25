@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /data/
 Disallow: /google837d2a0737138eb3.html

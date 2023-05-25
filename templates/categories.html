@@ -1,0 +1,20 @@
+   {% extends "base.html" %}
+   {% block content %}
+   <header class="hero">
+    <div class="content">
+     <h1>Categories</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    {% for cat in categories %}
+    <h3>{{ cat|capitalize }}</h3>
+    <ul>
+     {% for post in posts %}
+      {% if post['category'] == cat %}
+       <li><a href="https://caci-ns.github.io/{{ post.category }}/{{ post.year }}/{{ post.month }}/{{ post.day }}/{{ post.slug }}.html">{{ post.title }}</a></li>
+      {% endif %}
+     {% endfor %}
+    </ul>
+    {% endfor %}
+   </div>
+   {% endblock %}
