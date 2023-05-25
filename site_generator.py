@@ -151,7 +151,7 @@ except Exception as e:
 categories_html = categories_template.render(posts=render_posts, categories=render_categories, year=year, page_title='Categories - CACI Network Services Blog')
 try:
  # Create new categories/ (SEO URL) folder
- categories_page_directory = OUTPUT_DIRECTORY + '/categories'
+ categories_page_directory = OUTPUT_DIRECTORY + 'categories'
  # Create categories SEO directory
  if not os.path.exists(page_page_directory):
   os.mkdir(categories_page_directory)

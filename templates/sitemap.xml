@@ -10,7 +10,7 @@
  </url>
  {% for page in pages %}
  <url>
-  <loc>https://caci-ns.github.io/{{ page.permalink }}</loc>
+  <loc>https://caci-ns.github.io{{ page.permalink }}</loc>
   <changefreq>always</changefreq>
  </url>
  {% endfor %}
