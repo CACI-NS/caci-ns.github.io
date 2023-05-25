@@ -6,7 +6,7 @@
  </url>
  {% for post in posts %}
  <url>
-  <loc>https://caci-ns.github.io/{{ post.category }}/{{ post.date[0:4] }}/{{ post.date[5:7] }}/{{ post.date[8:10] }}/{{ post.slug }}.html</loc>
+  <loc>https://caci-ns.github.io/{{ post.category }}/{{ post.date_raw[0:4] }}/{{ post.date_raw[5:7] }}/{{ post.date_raw[8:10] }}/{{ post.slug }}.html</loc>
   <changefreq>always</changefreq>
  </url>
  {% endfor %}

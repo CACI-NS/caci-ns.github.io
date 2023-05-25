@@ -64,6 +64,7 @@ for post in POSTS:
   'summary': post_first_paragraph[0] if (len(post_first_paragraph) > 0) else POSTS[post][:400],
   'slug': post_metadata['slug'],
   'date': datetime.datetime.strptime(post_metadata['date'], "%Y-%m-%d %H:%M").strftime("%b %d, %Y"),
+  'date_raw': post_metadata['date'],
   'year': post_metadata['date'][0:4],
   'month': post_metadata['date'][5:7],
   'day': post_metadata['date'][8:10],
