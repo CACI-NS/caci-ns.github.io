@@ -1,125 +1,143 @@
 body {
- background-color: white;
-}
-p {
- margin: 0 0.5em 0.2em 0.2em;
- padding: 0;
-}
-ul, ol {
- margin: 0 0.5em 0 1.6em;
- padding: 0;
-}
-table {
- margin: 0 1em 1em 1em;
-}
-th {
- background-color: #F14957;
-}
-.info {
- font-size: medium;
- color: #777;
- text-align: center;
-}
-.info span {
- margin-right: 1em;
-}
-.info a {
-  color: #777;
-}
-.button {
- background-color: #ed1b2d;
-}
-nav.transparent{
- box-shadow:none;
- background:none;
- color: #cecece;
-}
-@media (max-width: 900px) {
- .icon {
-  display: none !important;
+  background-color: white;
  }
-}
-.icon {
- display: block;
- width: 100px;
- float: right;
- margin: 0.4em;
- color: #F14957;
- font-size: 100px !important;
- text-align: center;
-}
-.footer {
- padding: 1em;
- background-color: #232629;
- color: #bcbbbb;
- font-size: small;
-}
-.footer a {
- color: #bcbbbb;
-}
-.footer a:hover {
- color: #dedede;
-}
-.footer ul {
- margin: 0;
- padding: 0;
- list-style-type: none;
-}
-.visual {
- text-align: left;
- width: 100%;
- /*max-width: 960px;*/
- margin: 0 auto;
- padding: 1em 0.2em 0 0.2em;
-}
-.visual a:hover {
- font-weight: bold;
-}
-.card {
- border-top: none;
- border-left: none;
- border-right: none;
- /*border-bottom: 1px solid #aaa;*/
- border-bottom: none;
- padding-bottom: 0.5em;
-}
-.card img {
- display: none;
- float: right;
- max-width: 300px;
- margin-right: 1em;
-}
-.card header {
- border-bottom: none;
-}
-.card footer {
- color: #777;
-}
-.card footer button {
- float: right;
-}
-.hero {
- position:relative;
- width:100%;
- height:30vh;
- transition:height 999999s;
- text-align:center;
- min-height:300px;
- color:#fff;
- padding:1px 0;
- background:#3f4042 url("img/background.jpg") no-repeat 50% center scroll;
- background-color: #3f4042;
- background-size:cover
-}
-.hero .content {
- position:relative;
- top:45%;
- transform:translateY(-50%);
- font-size: 1.5em;
-}
-h3 a {
- color: #444;
-}
-h3 a:hover {
- color: #777;
-}
+ p {
+  margin: 0 0.5em 0.2em 0.2em;
+  padding: 0;
+ }
+ @media (max-width: 1200px) {
+  h1 {
+   font-size: 1.4em;
+  }
+ }
+ @media (max-width: 900px) {
+  h1 {
+   font-size: 1.2em;
+  }
+ }
+ h1 {
+  padding: 0 0.5em;
+ }
+ ul, ol {
+  margin: 0 0.5em 0 1.6em;
+  padding: 0;
+ }
+ table {
+  margin: 0 1em 1em 1em;
+ }
+ th {
+  background-color: #F14957;
+ }
+ .info {
+  font-size: medium;
+  color: #777;
+  text-align: center;
+ }
+ @media (max-width: 900px) {
+  .info {
+   font-size: small;
+  }
+ }
+ .info span {
+  margin-right: 1em;
+ }
+ .info a {
+  color: #777;
+ }
+ .button {
+  background-color: #ed1b2d;
+ }
+ nav.transparent{
+  box-shadow:none;
+  background:none;
+  color: #cecece;
+ }
+ .icon {
+  display: block;
+  width: 100px;
+  float: right;
+  margin: 0.4em;
+  color: #F14957;
+  font-size: 100px !important;
+  text-align: center;
+ }
+ @media (max-width: 900px) {
+  .icon {
+   display: none !important;
+  }
+ }
+ .footer {
+  padding: 1em;
+  background-color: #232629;
+  color: #bcbbbb;
+  font-size: small;
+ }
+ .footer a {
+  color: #bcbbbb;
+ }
+ .footer a:hover {
+  color: #dedede;
+ }
+ .footer ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+ }
+ .visual {
+  text-align: left;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1em 0.2em 0 0.2em;
+ }
+ .visual a:hover {
+  font-weight: bold;
+ }
+ .card {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  /*border-bottom: 1px solid #aaa;*/
+  border-bottom: none;
+  padding-bottom: 0.5em;
+ }
+ .card img {
+  display: none;
+  float: right;
+  max-width: 300px;
+  margin-right: 1em;
+ }
+ .card header {
+  border-bottom: none;
+ }
+ .card footer {
+  color: #777;
+ }
+ .card footer button {
+  float: right;
+ }
+ .hero {
+  position:relative;
+  width:100%;
+  height:30vh;
+  transition:height 999999s;
+  text-align:center;
+  min-height:300px;
+  color:#fff;
+  padding:1px 0;
+  background:#3f4042 url("https://caci-ns.github.io/img/background.jpg") no-repeat 50% center scroll;
+  background-color: #3f4042;
+  background-size:cover
+ }
+ .hero .content {
+  position:relative;
+  top:45%;
+  transform:translateY(-50%);
+  font-size: 1.5em;
+ }
+ h3 a {
+  color: #444;
+ }
+ h3 a:hover {
+  color: #777;
+ }
