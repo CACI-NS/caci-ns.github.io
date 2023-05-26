@@ -4,7 +4,7 @@
   <title>{{ page_title }}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance">
+  <meta name="description" content="{{ seo.description }}">
   <meta name="author" content="CACI Network Services">
   <meta name="robots" content="index,follow">
   <!-- Picnic CSS -->
@@ -20,22 +20,26 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <!-- Open Graph -->
   <meta property="og:locale" content="en_GB">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="CACI Network Services Blog">
-  <meta property="og:description" content="Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance">
+  <meta property="og:type" content="{{ seo.type|lower }}">
+  <meta property="og:title" content="{{ seo.title }}">
+  <meta property="og:description" content="{{ seo.description }}">
   <meta property="og:image" content="https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png">
-  <meta property="og:url" content="https://cacins.careers">
-  <meta property="og:site_name" content="CACI Network Services Blog">
+  <meta property="og:url" content="{{ seo.url }}">
+  <meta property="og:site_name" content="{{ seo.name }}">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="CACI Network Services Blog">
-  <meta name="twitter:url" content="https://cacins.careers">
+  <meta name="twitter:title" content="{{ seo.title }}">
+  <meta name="twitter:url" content="{{ seo.url }}">
   <meta name="twitter:image" content="https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png">
-  <meta name="twitter:description" content="Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance">
+  <meta name="twitter:description" content="{{ seo.description }}">
   <meta name="twitter:site" content="@caci_ns">
   <meta name="twitter:creator" content="@caci_ns">
   <!-- JSON-LD Schema -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance","headline":"CACI Network Services Blog","name":"CACI/CD","url":"https://caci-ns.github.io/"}</script>
+  {% if seo.type == 'Article' %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"{{ seo.type }}","description":"{{ seo.description }}","headline":"{{ seo.title }}","name":"{{ seo.title }} - {{ seo.name }}","url":"{{ seo.url }}"}</script>
+  {% else %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"{{ seo.type }}","description":"{{ seo.description }}","headline":"{{ seo.title }}","name":"{{ seo.name }}","url":"{{ seo.url }}"}</script>
+  {% endif %}
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMSMNQKWSJ"></script>
   <script>

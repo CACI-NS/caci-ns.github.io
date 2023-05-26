@@ -37,6 +37,15 @@ except Exception as e:
  # Failed to attach to specified Pages (Folder) within repo
  print(' Enumerating Pages... Failed [' + str(e).split('.')[0] + ']')
 
+# Process default SEO tags
+SEO = {
+ 'url': 'https://caci-ns.github.io',
+ 'name': 'CACI Network Services Blog',
+ 'title': 'CACI Network Services Blog',
+ 'description': 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance',
+ 'type': 'WebSite'
+}
+
 # Load Jinja2 HTML templates in
 try:
  production = Environment(loader=FileSystemLoader(TEMPLATES_DIRECTORY), trim_blocks=True, lstrip_blocks=True)
@@ -46,10 +55,10 @@ try:
  categories_template = production.get_template('categories.html')
  sitemap_template = production.get_template('sitemap.xml')
  # Successful Jinja2 Template load, output to log
- print('\nLoading Jinja2 Blog Site Templates... Done')
+ print('Loading Jinja2 Blog Site Templates... Done')
 except Exception as e:
  # Failed Jinja2 Template load, output to log
- print('\nLoading Jinja2 Blog Site Templates... Failed [' + str(e)[:60] + ']')
+ print('Loading Jinja2 Blog Site Templates... Failed [' + str(e)[:60] + ']')
 
 # Render Blog posts to dictionary
 render_posts = []
@@ -80,7 +89,12 @@ for post in POSTS:
   print('  Rendered Blog Category - ' + post_metadata['category'])
 
  # Output individual Blog Post page HTML files
- post_html = post_template.render(post=post_data, year=year, page_title=post_data['title'] + ' - CACI/CD Network Services Blog')
+ render_seo = SEO
+ render_seo['url'] = 'https://caci-ns.github.io' + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day'] + '/' + post_data['slug'] + '.html'
+ render_seo['title'] = post_data['title']
+ render_seo['description'] = post_first_paragraph[0] if (len(post_first_paragraph) > 0) else post_data['content'][:400]
+ render_seo['type'] = 'Article'
+ post_html = post_template.render(post=post_data, seo=render_seo, year=year, page_title=post_data['title'] + ' - CACI/CD Network Services Blog')
  try:
   # Create new category/year/month/day/ (SEO URL) folders Posts entries as subfolders
   post_page_directory = OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day']
@@ -110,6 +124,7 @@ render_pages = []
 print('\nRendering each Blog Page to HTML...')
 for page in PAGES:
  page_metadata = PAGES[page].metadata
+ page_first_paragraph = re.findall('<p>(.*)</p>', PAGES[page], re.MULTILINE)
  page_data = {
   'content': PAGES[page],
   'title': page_metadata['title'],
@@ -120,7 +135,12 @@ for page in PAGES:
  print(' Rendered Blog Page - ' + page_metadata['title'])
 
  # Output individual Blog Page HTML files
- page_html = page_template.render(page=page_data, year=year, page_title=page_data['title'] + ' - CACI/CD Network Services Blog')
+ render_seo = SEO
+ render_seo['url'] = 'https://caci-ns.github.io' + page_data['permalink']
+ render_seo['title'] = page_data['title'] + ' - CACI Network Services Blog'
+ render_seo['description'] = page_first_paragraph[0] if (len(page_first_paragraph) > 0) else page_data['content'][:400]
+ render_seo['type'] = 'WebSite'
+ page_html = page_template.render(page=page_data, year=year, seo=render_seo, page_title=page_data['title'] + ' - CACI/CD Network Services Blog')
  try:
   # Create new <page_name>/ (SEO URL) folder
   page_page_directory = OUTPUT_DIRECTORY + page_data['permalink']
@@ -137,7 +157,12 @@ for page in PAGES:
   print('  Rendering Blog Page HTML pages... Failed [' + str(e)[:100] + ']')
 
 # Output Blog home page HTML file
-home_html = home_template.render(posts=render_posts, year=year, page_title='CACI Network Services Blog')
+render_seo = SEO
+render_seo['url'] = 'https://caci-ns.github.io'
+render_seo['title'] = 'CACI Network Services Blog'
+render_seo['type'] = 'WebSite'
+render_seo['description'] = 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance'
+home_html = home_template.render(posts=render_posts, seo=render_seo, year=year, page_title='CACI Network Services Blog')
 try:
  with open(OUTPUT_DIRECTORY + 'index.html', 'w', encoding='utf-8') as file:
   file.write(home_html)
@@ -148,7 +173,11 @@ except Exception as e:
  print('\nRendering Blog Home HTML page... Failed [' + str(e)[:60] + ']')
 
 # Output Blog Categories page HTML file
-categories_html = categories_template.render(posts=render_posts, categories=render_categories, year=year, page_title='Categories - CACI Network Services Blog')
+render_seo = SEO
+render_seo['url'] = 'https://caci-ns.github.io/categories/'
+render_seo['title'] = 'Categories - CACI Network Services Blog'
+render_seo['type'] = 'WebSite'
+categories_html = categories_template.render(posts=render_posts, categories=render_categories, seo=render_seo, year=year, page_title='Categories - CACI Network Services Blog')
 try:
  # Create new categories/ (SEO URL) folder
  categories_page_directory = OUTPUT_DIRECTORY + 'categories'
