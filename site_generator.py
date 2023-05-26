@@ -138,7 +138,7 @@ for page in PAGES:
  render_seo = SEO
  render_seo['url'] = 'https://caci-ns.github.io' + page_data['permalink']
  render_seo['title'] = page_data['title'] + ' - CACI Network Services Blog'
- render_seo['description'] = page_first_paragraph[0] if (len(page_first_paragraph) > 0) else page_data['content'][:400]
+ render_seo['description'] = page_first_paragraph[0] if (len(page_first_paragraph) > 200) else page_data['content'][:200]
  render_seo['type'] = 'WebSite'
  page_html = page_template.render(page=page_data, year=year, seo=render_seo, page_title=page_data['title'] + ' - CACI/CD Network Services Blog')
  try:
