@@ -32,7 +32,7 @@ Within the Markdown file, the frontmatter section (the lines in between `---` de
 * `slug`
   * Alphanumeric-only (letters, numbers and hyphens only) summary of the title - this becomes the URL for the Blog Post
 * `date`
-  * In format `year-month-day hours:seconds` with leading 0's left intact (i.e. March is `03` and not `3`)
+  * In format `year-month-day hours:minutes` with leading 0's left intact (i.e. March is `03` and not `3`)
 * `category`
   * All-lowercase, single category the Blog Post falls under, examples are `devops`, `networking`, `itsm`, `telco`
 * `icon`
