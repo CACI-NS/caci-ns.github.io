@@ -31,6 +31,7 @@ th {
 @media (max-width: 800px) {
  .info {
   display: inline-block !important;
+  padding: 0 1em !important;
   font-size: small !important;
  }
 }
