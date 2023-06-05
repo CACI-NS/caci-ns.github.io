@@ -31,8 +31,11 @@ th {
 @media (max-width: 800px) {
  .info {
   display: inline-block !important;
-  padding: 0 1em !important;
+  margin: 0 0.5 0.2em 0.5em !important;
   font-size: small !important;
+ }
+ .info span {
+  display: inline-block !important;
  }
 }
 .info {
