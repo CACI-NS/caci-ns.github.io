@@ -28,18 +28,17 @@ table {
 th {
  background-color: #F14957;
 }
+@media (max-width: 800px) {
+ .info {
+  display: inline-block !important;
+  font-size: small !important;
+ }
+}
 .info {
  padding-left: 0 !important;
  font-size: medium;
  color: #777;
  text-align: center;
- word-break: break-word;
- overflow-wrap: break-word;
-}
-@media (max-width: 900px) {
- .info {
-  font-size: small;
- }
 }
 .info span {
  margin-right: 1em;
@@ -139,14 +138,9 @@ nav.transparent{
  background-color: #3f4042;
  background-size: cover;
 }
-@media (max-width: 800px) {
- .hero .content span {
-  display: inline-block;
- }
-}
 .hero .content {
  position: relative;
- padding: 0 1em;
+ padding: 0 0.5em;
  top: 45%;
  transform: translateY(-50%);
  font-size: 1.5em;
