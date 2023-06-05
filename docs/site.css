@@ -139,6 +139,11 @@ nav.transparent{
  background-color: #3f4042;
  background-size: cover;
 }
+@media (max-width: 800px) {
+ .hero .content span {
+  display: inline-block;
+ }
+}
 .hero .content {
  position: relative;
  top: 45%;
