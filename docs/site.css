@@ -22,11 +22,22 @@ ul, ol {
  margin: 0 0.5em 0 1.6em;
  padding: 0;
 }
+@media (max-width: 800px) {
+ table {
+  font-size: smaller;
+ }
+}
 table {
  margin: 0 1em 1em 1em;
+ width: 100%;
+ table-layout: fixed;
 }
 th {
  background-color: #F14957;
+}
+td {
+ word-wrap: break-word;
+ word-break: break-all;
 }
 @media (max-width: 800px) {
  .info {
@@ -158,4 +169,5 @@ h3 a:hover {
 img {
  display: block;
  margin: 0 auto;
+ max-width: 100%;
 }
