@@ -17,6 +17,11 @@ print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB START - CACI
 
 # Process blog posts from Posts folder
 POSTS = {}
+##DEBUG
+print(os.listdir('posts'))
+print('\n---\n')
+print(reversed(os.listdir('posts')))
+##DEBUG
 # Select Posts (Folder) within local repo and reverse-sort (newest Post at the top of the Homepage)
 try:
  for post_md_filename in reversed(os.listdir('posts')):
