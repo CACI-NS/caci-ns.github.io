@@ -23,6 +23,9 @@ try:
   with open('posts/' + post_md_filename, 'r') as f:
    POSTS[post_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
  POSTS = dict(reversed(POSTS.items()))
+ ##DEBUG
+ print(POSTS)
+ ##DEBUG
 except Exception as e:
  # Failed to attach to specified Posts (Folder) within repo
  print(' Enumerating Posts... Failed [' + str(e).split('.')[0] + ']')
