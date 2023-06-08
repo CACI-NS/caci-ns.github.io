@@ -35,6 +35,10 @@ table {
 th {
  background-color: #F14957;
 }
+td:first-child {
+ word-wrap: normal;
+ word-break: normal;
+}
 td {
  word-wrap: break-word;
  word-break: break-all;
