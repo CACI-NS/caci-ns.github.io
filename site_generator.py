@@ -17,11 +17,12 @@ print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB START - CACI
 
 # Process blog posts from Posts folder
 POSTS = {}
-# Select Posts (Folder) within local repo
+# Select Posts (Folder) within local repo and reverse-sort (newest Post at the top of the Homepage)
 try:
  for post_md_filename in os.listdir('posts'):
   with open('posts/' + post_md_filename, 'r') as f:
    POSTS[post_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
+ POSTS = dict(reversed(POSTS.items()))
 except Exception as e:
  # Failed to attach to specified Posts (Folder) within repo
  print(' Enumerating Posts... Failed [' + str(e).split('.')[0] + ']')

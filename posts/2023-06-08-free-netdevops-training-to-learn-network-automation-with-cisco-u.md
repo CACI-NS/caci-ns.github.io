@@ -6,7 +6,7 @@ category: networking
 icon: graduation-cap
 ---
 
-Cisco have recently complemented their various Training and Learning Platforms (including [Cisco Digital Learning](https://digital-learning.cisco.com), [Cisco Learning Network](https://learningnetwork.cisco.com/s/) and [Cisco Live](https://www.ciscolive.com)) with a new user-friendly offering - [Cisco U](https://u.cisco.com).
+Cisco have recently complemented their various Training and Learning Platforms (including [Cisco Digital Learning](https://digital-learning.cisco.com), [Cisco Learning Network](https://learningnetwork.cisco.com/s/) and [Cisco Live](https://www.ciscolive.com)) with a new user-friendly offering - [Cisco U](https://u.cisco.com). While some of the content is pricy, we've found some completely free-of-charge Network Automation Courses that we think you should know about.
 
 ![Overview page of Cisco U](/img/cisco-u.jpg)
 
@@ -40,24 +40,23 @@ Although some of those prices may seem a little steep for individuals, there is 
 
 Here's a curated summary of some of our favourite _completely free of charge_ Courses:
 
-| Course | Duration | Topics | Link |
-| ------ | -------- | ------ | ---- |
-| Implementing Model-Driven Telemetry | 1 hour | Telemetry, NETCONF, gNMI | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_09 |
-| Data Encoding Formats - XML, JSON, YAML | 1 hour | XML, JSON, YAML, APIs | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_02 |
-| Introduction to Source Control and Git | 1 hour | Version Control, Git - Push, Pull Request, Commit, Branch, Clone | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_06 |
-| Introduction to APIs | 2 hours | APIs, Async, REST, HTTP - GET, PUT, POST, PATCH | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_05 |
-| Importing Python Modules | 25 mins | Python, PIP, PyPI | https://ondemandelearning.cisco.com/apollo-alpha/tc-python-imports |
-| Introduction to Linux and Bash | 2 hours | Linux, Shell, Bash, CLI, grep, awk, sed, cat, Piping | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_04 |
-| Introduction to Vim Text Editor | 20 mins | Vim, vi, nano, Text Manipulation | https://ondemandelearning.cisco.com/apollo-alpha/tc-vim-introduction |
-| Introduction to Network Automation | 1 hour | CI/CD Pipelines, Playbooks, Orchestration, NetDevOps | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_01 |
-| NETCONF and RESTCONF | 1 hour | NETCONF, RESTCONF, CLI | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_11 |
-Understanding YANG Models | 2 hours | YANG, Data Models | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_08 |
-| Advanced Automation for a NetDevOps Pipeline | 4 hours | NetDevOps, CI/CD, Pipelines | https://ondemandelearning.cisco.
-om/apollo-alpha/mc_naec10_14 |
-| Network Automation with Ansible | 2 hours | Ansible, Playbooks, YAML | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_07 |
-| Orchestrating Network Services with Cisco NSO | 5 hours | Cisco NSO | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_12 |
-| Network Automation Testing with pyATS | 3 hours | pyATS, Genie, EXPRESSO | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_13 |
-| Using Python for Network Automation | 1 hour | Python, PIP, Netmiko | https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_03 |
+| Course | Duration | Topics |
+| ------ | -------- | ------ |
+| [Implementing Model-Driven Telemetry](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_09) | 1 hour | Telemetry, NETCONF, gNMI |
+| [Data Encoding Formats - XML, JSON, YAML](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_02) | 1 hour | XML, JSON, YAML, APIs |
+| [Introduction to Source Control and Git](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_06) | 1 hour | Version Control, Git - Push, Pull Request, Commit, Branch, Clone |
+| [Introduction to APIs](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_05) | 2 hours | APIs, Async, REST, HTTP - GET, PUT, POST, PATCH |
+| [Importing Python Modules](https://ondemandelearning.cisco.com/apollo-alpha/tc-python-imports) | 25 mins | Python, PIP, PyPI |
+| [Introduction to Linux and Bash](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_04) | 2 hours | Linux, Shell, Bash, CLI, grep, awk, sed, cat, Piping |
+| [Introduction to Vim Text Editor](https://ondemandelearning.cisco.com/apollo-alpha/tc-vim-introduction) | 20 mins | Vim, vi, nano, Text Manipulation |
+| [Introduction to Network Automation](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_01) | 1 hour | CI/CD Pipelines, Playbooks, Orchestration, NetDevOps |
+| [NETCONF and RESTCONF](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_11) | 1 hour | NETCONF, RESTCONF, CLI |
+| [Understanding YANG Models](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_08) | 2 hours | YANG, Data Models |
+| [Advanced Automation for a NetDevOps Pipeline](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_14) | 4 hours | NetDevOps, CI/CD, Pipelines |
+| [Network Automation with Ansible](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_07) | 2 hours | Ansible, Playbooks, YAML |
+| [Orchestrating Network Services with Cisco NSO](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_12) | 5 hours | Cisco NSO |
+| [Network Automation Testing with pyATS](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_13) | 3 hours | pyATS, Genie, EXPRESSO |
+| [Using Python for Network Automation](https://ondemandelearning.cisco.com/apollo-alpha/mc_naec10_03) | 1 hour | Python, PIP, Netmiko |
 
 ## The future of Cisco Learning
 This looks like a promising step in consolidating all the disparate Cisco Learning platforms, systems and content into one centralised, easily-searchable, visually-appealing and well-organised place. Sure, the pricing may seem steep at present - and as an individual general Network Engineering Learner, you'd get better bang for your buck going via [CBT Nuggets](https://www.cbtnuggets.com), [INE](https://ine.com), [Pluralsight](https://www.pluralsight.com) or [Udemy](https://www.udemy.com) - but for Network Automation-specific content, for **free**, [Cisco U](https://u.cisco.com), this is a surefire winner for anyone wanting to break in to the world of NetDevOps.

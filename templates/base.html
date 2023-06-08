@@ -118,6 +118,11 @@ function navScroll(){
 window.onscroll = navScroll;
 navScroll();
 setTimeout(function(){ nav.classList.remove('loading'); }, 10);
+
+// Open External Links in new browser window
+$(document.links).filter(function() {
+ return this.hostname != window.location.hostname;
+}).attr('target', '_blank');
 </script>
  </body>
 </html>
