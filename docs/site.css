@@ -156,5 +156,6 @@ h3 a:hover {
  color: #777;
 }
 img {
+ display: block;
  margin: 0 auto;
 }
