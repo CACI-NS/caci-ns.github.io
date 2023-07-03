@@ -5,6 +5,13 @@ p {
  margin: 0 0.5em 0.2em 0.2em;
  padding: 0;
 }
+blockquote {
+ margin: 0 0.5em 1em 1.5em;
+ padding-bottom: 0 !important;
+ font-style: italic;
+ color: #777;
+ background-color: #fcfcfc
+}
 @media (max-width: 1200px) {
  h1 {
   font-size: 1.4em;
