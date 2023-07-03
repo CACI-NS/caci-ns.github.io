@@ -8,7 +8,7 @@ icon: thermometer-three-quarters
 
 Capacity Management has been a stable of IT Service Management (ITSM) for many years, often historically associated with practices such as Just In Time (JIT) hardware provision to achieve Network, Storage or Compute low-watermarks which sustain Service Level Agreements (SLAs). However, as the move to commodified on-demand workload prevails - as enabled through Cloud and DevOps Provisioning practices - Capacity Management begins to become less optimal as a practice to sustain the delicate balance of cost versus performance for an IT System.
 
-![Cost Optimisation contrasted with Capacity Management](img/cost-optimisation-capacity-management.jpg)
+![Cost Optimisation contrasted with Capacity Management](/img/cost-optimisation-capacity-management.jpg)
 
 However, with the increased adoption of Cloud Native giving rise to OpEx, rental-based workload hosting over CapEx, ownership-based workload hosting, we're seeing a new contender for managing performance against cost in the IT Services space - _Cost Optimisation_.
 
