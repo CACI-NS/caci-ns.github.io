@@ -69,7 +69,8 @@ render_categories = []
 print('\nRendering each Blog Post to HTML...')
 for post in POSTS:
  post_metadata = POSTS[post].metadata
- post_first_paragraph = re.findall('<p>(.*)</p>', POSTS[post], re.MULTILINE)
+ post_first_paragraph_temp = re.findall('<p>(.*)</p>', POSTS[post], re.MULTILINE)
+ post_first_paragraph = re.sub('<a.*?>|</a>', '', post_first_paragraph_temp[0])
  post_images = re.findall('<img src="(.*)" alt=', POSTS[post], re.MULTILINE)
  post_data = {
   'content': POSTS[post],
