@@ -11,7 +11,6 @@ Call it [Secure Access Service Edge (SASE)](https://www.networkworld.com/article
 The answer, bluntly, is they aren't; the modern Business Application Landscape has vastly changed, and Remote Access needs to change with it.
 
 # Story Time
-
 The time was all your Business Applications would be on-premises (on-prem), and you'd need to sometimes infrequently allow employees to access these from home. Let's say you're a typical Enterprise shop, with:
 
 * A few on-premises Data Centres from various UK Managed Services Providers (MSPs), or even Colocation (Colo) Providers
@@ -59,7 +58,7 @@ Let's level-set a bit - you are still a Big Enterprise, so Digital Transformatio
 * Deploy SASE Connectors into your Branch Offices
 * Deploy SASE Connectors (or accept the native-Internet Frontdoor into) your Public Cloud-hosted Apps
 
-![ExampleCo current topology post--SASE](/img/sampleco_future_topology.png)
+![ExampleCo current topology post-SASE](/img/sampleco_future_topology.png)
 
 You've come to terms that most of your Staff work well Remotely, and that the "fulltime return to Office, Mon-Fri, 9-5" is unlikely to happen. Your staff are much happier using the SASE (i.e. [Zscaler](https://www.zscaler.com), [Cato Networks](https://www.catonetworks.com), [Cloudflare](https://www.cloudflare.com), [Netskope](https://www.netskope.com)), and unexpectedly your DIA and MPLS pipes are actually quieter because of this.
 
