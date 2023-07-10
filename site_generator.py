@@ -98,7 +98,7 @@ for post in POSTS:
  render_seo = SEO
  render_seo['url'] = 'https://caci-ns.github.io' + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day'] + '/' + post_data['slug'] + '.html'
  render_seo['title'] = post_data['title']
- render_seo['description'] = re.findall('([a-zA-Z0-9\-\(\),\'\s\.]{1,})', post_first_paragraph, re.MULTILINE)[0][:200]
+ render_seo['description'] = re.findall('([a-zA-Z0-9\-\(\),;:\'\s\.]{1,})', post_first_paragraph, re.MULTILINE)[0][:200]
  render_seo['type'] = 'Article'
  render_seo['image'] = post_data['hero_image'] if (post_data['hero_image'] is not None) else 'https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png'
  post_html = post_template.render(post=post_data, seo=render_seo, year=year, page_title=post_data['title'] + ' - CACI/CD Network Services Blog')
