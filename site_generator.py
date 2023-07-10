@@ -22,7 +22,7 @@ try:
  posts_files = os.listdir('posts')
  posts_files.sort(reverse=True)
  for post_md_filename in posts_files:
-  with open('posts/' + post_md_filename, 'r') as f:
+  with open('posts/' + post_md_filename, 'r', encoding='utf-8') as f:
    POSTS[post_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
 except Exception as e:
  # Failed to attach to specified Posts (Folder) within repo
@@ -33,7 +33,7 @@ PAGES = {}
 # Select Pages (Folder) within local repo
 try:
  for page_md_filename in os.listdir('pages'):
-  with open('pages/' + page_md_filename, 'r') as f:
+  with open('pages/' + page_md_filename, 'r', encoding='utf-8') as f:
    PAGES[page_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
 except Exception as e:
  # Failed to attach to specified Pages (Folder) within repo
@@ -45,7 +45,8 @@ SEO = {
  'name': 'CACI Network Services Blog',
  'title': 'CACI Network Services Blog',
  'description': 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance',
- 'type': 'WebSite'
+ 'type': 'WebSite',
+ 'image': 'https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png'
 }
 
 # Load Jinja2 HTML templates in
@@ -69,6 +70,7 @@ print('\nRendering each Blog Post to HTML...')
 for post in POSTS:
  post_metadata = POSTS[post].metadata
  post_first_paragraph = re.findall('<p>(.*)</p>', POSTS[post], re.MULTILINE)
+ post_images = re.findall('<img src="(.*)" alt=', POSTS[post], re.MULTILINE)
  post_data = {
   'content': POSTS[post],
   'title': post_metadata['title'],
@@ -80,7 +82,8 @@ for post in POSTS:
   'month': post_metadata['date'][5:7],
   'day': post_metadata['date'][8:10],
   'category': post_metadata['category'],
-  'icon': post_metadata['icon']
+  'icon': post_metadata['icon'],
+  'hero_image': 'https://caci-ns.github.io' + post_images[0] if (len(post_images) > 0) else None
  }
  # Add current post to render_posts list
  render_posts.append(post_data)
@@ -96,6 +99,7 @@ for post in POSTS:
  render_seo['title'] = post_data['title']
  render_seo['description'] = re.findall('([a-zA-Z0-9\-\(\),\'\s\.]{1,})', post_first_paragraph[0], re.MULTILINE)[0][:200]
  render_seo['type'] = 'Article'
+ render_seo['image'] = post_data['hero_image'] if (post_data['hero_image'] is not None) else 'https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png'
  post_html = post_template.render(post=post_data, seo=render_seo, year=year, page_title=post_data['title'] + ' - CACI/CD Network Services Blog')
  try:
   # Create new category/year/month/day/ (SEO URL) folders Posts entries as subfolders
@@ -197,7 +201,7 @@ except Exception as e:
 # Output Blog Sitemap XML file
 sitemap_xml = sitemap_template.render(posts=render_posts, pages=render_pages)
 try:
- with open(OUTPUT_DIRECTORY + 'sitemap.xml', 'w') as file:
+ with open(OUTPUT_DIRECTORY + 'sitemap.xml', 'w', encoding='utf-8') as file:
   file.write(sitemap_xml)
  # Successfully rendered Blog Sitemap, output to log
  print('\nRendering Blog XML Sitemap... Done')
