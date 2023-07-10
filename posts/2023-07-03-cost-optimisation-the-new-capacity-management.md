@@ -67,7 +67,7 @@ Cost Optimisation should exist to answer these questions in providing value back
 * Do our Development workloads operate to sensible Development-sized smaller or less-performant IaaS or PaaS components?
 * Can we Proof of Concept (PoC) under-provisioning against Enterprise Application workload System Requirements to measure the _actual_ impact - if any - on the SLA and OLAs our End Users are signed up to?
 * Can we utilise Economies of Scale to make more Infrastructure components cost less on aggregate?
-    * _Think along the lines of "Domino's Promo-Codeconomics - adding a 49p dip to your Domino's Order to push it over £50 so the "20% off £50" Promo Code takes affect_
+    * _Think along the lines of "Domino's Promo-Codeconomics" - adding a 49p dip to your Domino's Order to push it over £50 so the "20% off £50" Promo Code takes affect_
 
 ## Finesse your FinOps
 At [CACI Network Services](https://www.caci.co.uk/services/cloud-infrastructure/) we're well versed in using Cost Optimisation techniques to provide best-value for various types of Enterprise and Application Workload architectures, through our strong heritage in [Network Infrastructure Engineering and Consulting](https://www.caci.co.uk/services/network-infrastructure-consulting/).
