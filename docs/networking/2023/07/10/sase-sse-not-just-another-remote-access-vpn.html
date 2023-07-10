@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>SASE and SSEs are not just another Remote Access VPN - CACI/CD Network Services Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Call it Secure Access Service Edge (SASE); call it Secure Services Edge (SSE); call it Zero Trust Network Architecture (ZTNA)... even call it the Service Edge (Bono and U2 would be proud) - you might ">
+  <meta name="author" content="CACI Network Services">
+  <meta name="robots" content="index,follow">
+  <!-- Picnic CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" type="text/css">
+  <link rel="stylesheet" href="/site.css" type="text/css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- JQuery JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <!-- Open Graph -->
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SASE and SSEs are not just another Remote Access VPN">
+  <meta property="og:description" content="Call it Secure Access Service Edge (SASE); call it Secure Services Edge (SSE); call it Zero Trust Network Architecture (ZTNA)... even call it the Service Edge (Bono and U2 would be proud) - you might ">
+  <meta property="og:image" content="https://caci-ns.github.io/img/sampleco_current_topology.png">
+  <meta property="og:url" content="https://caci-ns.github.io/networking/2023/07/10/sase-sse-not-just-another-remote-access-vpn.html">
+  <meta property="og:site_name" content="CACI Network Services Blog">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SASE and SSEs are not just another Remote Access VPN">
+  <meta name="twitter:url" content="https://caci-ns.github.io/networking/2023/07/10/sase-sse-not-just-another-remote-access-vpn.html">
+  <meta name="twitter:image" content="https://caci-ns.github.io/img/sampleco_current_topology.png">
+  <meta name="twitter:description" content="Call it Secure Access Service Edge (SASE); call it Secure Services Edge (SSE); call it Zero Trust Network Architecture (ZTNA)... even call it the Service Edge (Bono and U2 would be proud) - you might ">
+  <meta name="twitter:site" content="@caci_ns">
+  <meta name="twitter:creator" content="@caci_ns">
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","description":"Call it Secure Access Service Edge (SASE); call it Secure Services Edge (SSE); call it Zero Trust Network Architecture (ZTNA)... even call it the Service Edge (Bono and U2 would be proud) - you might ","headline":"SASE and SSEs are not just another Remote Access VPN","name":"SASE and SSEs are not just another Remote Access VPN - CACI Network Services Blog","url":"https://caci-ns.github.io/networking/2023/07/10/sase-sse-not-just-another-remote-access-vpn.html"}</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMSMNQKWSJ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XMSMNQKWSJ');
+  </script>
+ </head>
+ <body>
+  <nav class="transparent">
+   <a href="/" class="brand"><span>CACI Network Services</span></a><input id="bmenu" type="checkbox" class="show">
+   <label for="bmenu" class="burger toggle pseudo button">menu</label>
+   <div class="menu">
+    <a href="https://github.com/CACI-NS" target="_blank" class="pseudo button">GitHub</a>
+    <a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" class="pseudo button">LinkedIn</a>
+    <a href="/about/" class="pseudo button">About</a>
+    <a href="/categories/" class="pseudo button">Categories</a>
+    <a href="https://cacins.careers" target="_blank" class="button">Careers</a>
+   </div>
+  </nav>
+  <main>
+   <header class="hero">
+    <div class="content">
+     <h1>SASE and SSEs are not just another Remote Access VPN</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    <p class="info">
+     <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Jul 10, 2023</span>
+     <span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;networking</span>
+     <span><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;<a href="https://twitter.com/caci_ns">Twitter</a></span>
+     <span><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/CACI-NS">GitHub</a></span>
+     <span><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<a href="mailto:info@caci.co.uk?subject=Help%20from%20Network%20Services">info@caci.co.uk</a></span>
+    </p>
+    <p>Call it <a href="https://www.networkworld.com/article/3574014/what-is-sase-a-cloud-service-that-marries-sd-wan-with-security.html">Secure Access Service Edge (SASE)</a>; call it <a href="https://www.paloaltonetworks.co.uk/cyberpedia/what-is-security-service-edge-sse">Secure Services Edge (SSE)</a>; call it <a href="https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-network-access">Zero Trust Network Architecture (ZTNA)</a>... even call it the Service Edge (Bono and U2 would be proud) - you might be forgiven for thinking talk about VPN is everywhere the moment, and wondering why everyone is <a href="https://www.cio.com/article/3072650/cloudwashing-what-it-is-and-how-to-avoid-it.html">Cloudwashing</a> what you've know as Remote Access VPN for many years.</p>
+
+<p>The answer, bluntly, is they aren't; the modern Business Application Landscape has vastly changed, and Remote Access needs to change with it.</p>
+
+<h1>Story Time</h1>
+
+<p>The time was all your Business Applications would be on-premises (on-prem), and you'd need to sometimes infrequently allow employees to access these from home. Let's say you're a typical Enterprise shop, with:</p>
+
+<ul>
+<li>A few on-premises Data Centres from various UK Managed Services Providers (MSPs), or even Colocation (Colo) Providers</li>
+<li>A few thousand employees scattered across the UK</li>
+<li>A hundred or so Business Applications</li>
+<li>A few Internet Gateway Data Centres with Web Proxies, Reverse Proxies and some diverse Direct Internet Access (DIA) connectivity</li>
+<li>Two hundred or so Branch/Office Locations across various UK Towns, Cities and the odd Factory/out-of-town Location</li>
+<li>Dipping your foot into Public Cloud Providers such as Amazon AWS, Microsoft Azure and Google Cloud (GCP)</li>
+</ul>
+
+<p>Maybe your Environment looked a little like this:</p>
+
+<p><img src="/img/sampleco_current_topology.png" alt="ExampleCo current topology pre-SASE" /></p>
+
+<h2>Current Mode of Operation (CMO)</h2>
+
+<p>Most of your Users were in the Office most of the time; when they needed to, they would use their VendorCo VPN Client to dial-in to <code>https://vpn.yourco.com</code> which would non-deterministically Load Balance between the Manchester VPN Concentrator and the London VPN Concentrator. This happened with complete disregard of where the User was geographically located (<em>"Look, it was too hard to explain to the MSP what Anycast DNS is, OK?"</em>). Their Productivity files (Word Documents; Excel Spreadsheets; etc) were mostly still on-prem, and located on File Servers in their Usual Office Locations; pretty much all the other 80% of the Business Support System (BSS)/Business Applications they need to perform their roles were also in your BSS Data Centres.</p>
+
+<p>You were running some Proof of Concept (PoC) work in the Public Cloud/Cloud Service Providers (CSPs), but weren't too sure if this would really take off in Big Enterprise or suit your needs. Most of your Business Apps had a good heritage and came from a time before React/Vue/Node JavaScript Frameworks existed, and largely before it was thought that a Web UI could be used for anything useful. You've got lots of Fat Clients, Oracle and IBM Middleware Layers, and people generally accept that your ERP Application looks like someone threw up with a paint can, and flunked out of Data Input Class in College (<em>"Checkboxes? Dropdowns? Multi-selects? Has this Vendor never heard of Input Validation!"</em>).</p>
+
+<p>Add in some Forward (Web) Proxies because Facebook won't read itself (and you have some legitimate Web Applications your Employees need to get to). Sprinkle on some Reverse Proxies because you had some Applications which - while hosted in your BSS/Backend Data Centres (that weren't natively setup to be Internet-accessible) - over the years you've found Suppliers, Systems Integrators (SIs) and Partners all need access to them. Sadly, these Apps didn't generally have a notion of an <a href="https://aws.amazon.com/what-is/api/#seo-faq-pairs#what-is-an-api">API</a>, so you've had to setup a Reverse Proxy or two in your Internet Gateway Data Centre to allow inbound Internet Access to them from other Systems (M2M).</p>
+
+<p>Most of your Staff thought the Remote Access VPN was clunky, slow, and cumbersome to launch (<em>"Ever noticed http://internal-intranet doesn't load on the VPN if you left Internet Explorer open before you took your Laptop home for the day, off the VPN?"</em>), but because they rarely used it, they would quietly tolerate all the issues it posed. You thought it was nice and secure because you only had two entry points into your Network via the WAN.</p>
+
+<h2>COVID-19 Mode of Operation</h2>
+
+<p>Things <a href="https://www.instituteforgovernment.org.uk/data-visualisation/timeline-coronavirus-lockdowns">rapidly change during Lockdown</a>, and suddenly most of your Users are now firmly Working from Home (WFH), and are struggling to use your Remote Access VPN because:</p>
+
+<ul>
+<li>It doesn't have the bandwidth</li>
+<li>It's slow to load (your Scottish Users are going via London; your Watford Users are going via Manchester; you lament not putting in Anycast DNS or Geo-based DNS GSLB)</li>
+<li>It's backhauling everything through two overloaded Internet Gateways (which have their DIA and MPLS pipes in a constant state of "on fire", in terms of Network Capacity Utilisation)</li>
+<li>It's not allowed through half the MSP Firewalls/ACLs you have on your on-prem Environment (<em>"I thought the VPN was 10.99.0.0/24; when did they change it to 10.98.0.0/23 on us? It'll take weeks to raise these ITIL Firewall Change Requests with MSPCo to get it done!"</em>)</li>
+<li>Your lesser-Technical Staff don't realise they have to enable it to access some on-prem Applications, and disable it to access the Applications you've quickly lift-shifted to Public Cloud</li>
+</ul>
+
+<p>In short, it's not really working out for you. But can you blame it? Remote Access SSL/IPsec VPN comes from an era before Cloud Distributed Computing existed; it's a <a href="https://www.cloudflare.com/en-gb/learning/access-management/castle-and-moat-network-security/">Moat expecting there to be a Castle where everything is inside</a>. Ditto, because the Applications of it's era operated at the lower levels of the <a href="https://www.networkworld.com/article/3239677/the-osi-model-explained-and-how-to-easily-remember-its-7-layers.html">OSI Model</a>, it needs to give your Client a Network-level (Layer 3) IP Address, and effectively act as an extension of your Corporate WAN "just in case" the Business Application in question needs that functionality to work.</p>
+
+<p>It's a Solution no longer fit for the current Application Landscape of Public Cloud, Commodified Applications and Geo-distributed Workloads.</p>
+
+<blockquote>
+  <p>The 80/20 has flipped; now more of your Business Applications have found themselves outside your Network Edge castle, and beyond the security afforded by your moat. The drawbridge is firmly down, and the people are fleeing your castle-and-moat WAN architectures</p>
+</blockquote>
+
+<h2>Future Mode of Operation</h2>
+
+<p>Let's level-set a bit - you are still a Big Enterprise, so Digital Transformation isn't going to be quick, and you've still got Legacy and on-premises Workloads like Mainframes that can't move to the Public Cloud for lots of sensible financial, compliance and business reasons. However, now you've started to (more aggressively than you'd like to, thanks to Coronavirus):</p>
+
+<ul>
+<li>Move Commodified Applications (i.e. all the Apps that were never specific to YourCo PLC in the first place -  Collaboration, Document Hosting, ERP and CRM, etc) to the Public Cloud
+<ul>
+<li>Typically, as a Software as a Service (SaaS) offering (in which case it may as well not exist to your WAN/Public Internet; <em>"You only need a Web Browser and Internet Connection to access it"</em>)</li>
+<li>Sometimes, as something cobbled together with a hybrid of SaaS and Platform as a Service (PaaS) because of a niche workload requirement you have (but it's still likely to bias for at least the Frontdoor of the App to be "Just access with your Web Browser and Internet", even if the Backend/M2M interaction doesn't)</li>
+</ul></li>
+<li>Deploy SASE Connectors (i.e. <a href="https://help.zscaler.com/zpa/about-connectors">Zscaler ZPA Connectors</a>) as-close to the Applications as possible, and in multiples (unlike the SSL-VPN Concentrators you only had a few of)</li>
+<li>Deploy SASE Connectors into your Branch Offices</li>
+<li>Deploy SASE Connectors (or accept the native-Internet Frontdoor into) your Public Cloud-hosted Apps</li>
+</ul>
+
+<p><img src="/img/sampleco_future_topology.png" alt="ExampleCo current topology post-SASE" /></p>
+
+<p>You've come to terms that most of your Staff work well Remotely, and that the "fulltime return to Office, Mon-Fri, 9-5" is unlikely to happen. Your staff are much happier using the SASE (i.e. <a href="https://www.zscaler.com">Zscaler</a>, <a href="https://www.catonetworks.com">Cato Networks</a>, <a href="https://www.cloudflare.com">Cloudflare</a>, <a href="https://www.netskope.com">Netskope</a>), and unexpectedly your DIA and MPLS pipes are actually quieter because of this.</p>
+
+<p>Your Security Posture has improved and you've found that you have less Perimeter Breaches, but you're not too sure why. You also find that Users report the same Legacy Applications (that you've not touched since pre-COVID) are more performant when they're at home than on the Remote Access VPN Prior.</p>
+
+<p>So what's the big change that's happened then? Why are most things much better, it's just SSL-VPN Tunnels, right?</p>
+
+<h2>SSE is not an OSI Layer 3 Network Extender</h2>
+
+<p>To understand the performance and security gains that a SSE with ZTNA brings to the table, we need to compare what a SASE/SSE is doing versus what a traditional Remote Access VPN is doing. It's perhaps easier to see this in a comparable format:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Concern</th>
+  <th>Remote Access VPN</th>
+  <th>SASE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>OSI Operating Layer</td>
+  <td>Layer 3 (IP)<br><em>"Barry's Laptop is 10.98.99.1/23 from VPN Range..."</em></td>
+  <td>Layer 4 (TCP/UDP)<br><em>"Barry's Laptop just looks like the SASE Concentrator at 10.10.3.2/24"</em></td>
+</tr>
+<tr>
+  <td>Geo-Load Balancing</td>
+  <td>None<br><em>"Claire is in Scotland but came in via the London VPN Concentrator?"</em></td>
+  <td>Yes (DNS GSLB or Anycast DNS)<br><em>"Claire is in Scotland, so went to the SASE Provider's Scolocate DC-hosted SASE Control Server"</em></td>
+</tr>
+<tr>
+  <td>Security Granularity</td>
+  <td>Course<br><em>"We need to allow the whole 10.98.0.0/23 VPN Range access to BusinessApp123"</em></td>
+  <td>Grain<br><em>"Bobby from Finance can access BusinessApp123; nobody else is allowed"</em></td>
+</tr>
+<tr>
+  <td>Tunnel Behaviour</td>
+  <td>Always-On/All-Traffic<br><em>"Janet is wasting DIA and MPLS bandwidth hairpinning in/out to get out to http://some-external-saas-app.com!"</em></td>
+  <td>Ad-Hoc/Split-Tunnel<br><em>"Janet only goes via the SASE Tunnel for on-prem/defined Applications"</em></td>
+</tr>
+<tr>
+  <td>Activity Logging</td>
+  <td>Minimal (if any)<br><em>"I've no idea what Patrick was trying to access via the VPN at 12:52 last Tuesday"</em></td>
+  <td>Holistic<br><em>"Patrick was trying to get to ServerName123 via TCP/456 at 12:52, but the TCP Session never went past SYN-ACK"</em></td>
+</tr>
+<tr>
+  <td>Tunnel Initiation</td>
+  <td>Singular, User-to-VPN Concentrator<br><em>"I see the SSL-VPN Tunnel from Nicole on TalkTalk into our London DC"</em></td>
+  <td>Multiple, SASE Connector to SASE Cloud<br><em>"Regardless of nobody being logged in, the SASE Connector in Colo DC #3 auto-dials-out to SASE.com Control Plane Cloud"</em></td>
+</tr>
+<tr>
+  <td>Day 0 Complexity</td>
+  <td>Low<br><em>"We just route through/allow in ACL 10.98.0.0/23 VPN Range, and away we go!"</em></td>
+  <td>High<br><em>"But I don't know all the Apps I have or TCP/UDP Ports that make up those Apps!"</em></td>
+</tr>
+<tr>
+  <td>Tunnel Flow</td>
+  <td>(Tun1) User -[Internet]-> VPN Concentrator<br><em>"One SSL Tunnel, from a VPN User to a VPN Concentrator"</em></td>
+  <td>(Tun1) User -[Internet]-> SASE Cloud<br>(Tun2) SASE Cloud -[Internet]-> SASE Connector<br><em>"SASE Provider has a Cloud LAN that stitches these two SSL Tunnels together for the end-to-end flow"</em></td>
+</tr>
+<tr>
+  <td>Branch Tunnel</td>
+  <td>Branch -[Internet]-> VPN Concentrator<br><em>"Branch Users always hairpin via our Internet Gateway-hosted VPN Concentrator, using our Internet Gateway DC's DIA bandwidth"</em></td>
+  <td>Branch -[Internet]-> SASE Cloud<br><em>"Branch Users only use our Internet Gateway DC DIA bandwidth when communicating with on-prem Offices; Remote End User stays on SASE Internet"</em></td>
+</tr>
+</tbody>
+</table>
+
+<p>By far and away the main difference in the SASE model is that of the Cloud-based LAN, where the Cloud-based LAN is the "magic" that stitches together multiple SSL Tunnels, to allow the solution to efficiently only use the SSL Tunnels required for a given end-to-end flow, rather than having to "waste" Internet Gateway DIA/MPLS bandwidth for a flow that may not be to/from an on-prem System or Location. This is also what provides the main benefits of SASE over Remote Access VPN as highlighted above, as the Cloud-based LAN acts as the "Piggy in the Middle" (MITM) to any given Application Flow, and therefore can enforce Security, Bandwidth and other controls at higher-levels of the OSI Model than a Layer 3-constrained Remote Access VPN is able to do.</p>
+
+<p><img src="/img/sase_the_cloud_fabric.png" alt="ExampleCo topology using SASE as a WAN Fabric" /></p>
+
+<p>When compared to the Business Application world, which is doing mostly the same thing (the Cloud is the "world's Computer", and has multiple attachment points/PoPs that are regionally close to the <em>User</em> as the centre of the Universe; not focussed on the App as the centre of the Universe), SASE can be seen as a better fit; in much the same way the Public Cloud uses Global Points of Presence (PoPs) as a mechanism to lessen the latency of an Application, and serve it as close to the User as possible, so too does a SASE use the closest "VPN Concentrator" to a given User. The OpEx-driven model allows a SASE Provider to do this cost-effectively for you as a singular Customer; whereas trying to build your own "Globe-spanning Cloud LAN" would cost significantly more outlay than you may be able to afford; hence using the SASE Provider's reach and expertise can only ever make sense over a more cumbersome Remote Access VPN.</p>
+
+<blockquote>
+  <p>SASE is doing to the Enterprise WAN what SD-WAN did to the Enterprise MPLS Network; or the Enterprise MPLS Network did the Enterprise Leased Line Mesh that preceded it; abstracting away point-to-point SSL Tunnels into a Fabric of dynamically-run, point-to-multipoint SSL Tunnel Flows that are created and destroyed on-demand</p>
+</blockquote>
+
+<h2>Struggling with your move to SSE or SASE</h2>
+
+<p>At <a href="https://www.caci.co.uk/contact/#contact-form">CACI Network Services</a> we've had the benefit of seeing many, many Customer Environments - from Heritage, through Legacy into Microservices Modernity - and have deep knowledge architecting, deploying and optimising a variety of SSE and SASE Security Access solutions. <a href="https://www.caci.co.uk/contact/#contact-form">Get in touch</a> and let us help you untangle the complex web of Secure Access into your Network Edge, and demystify the web of Zero Trust for your WAN.</p>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="flex one two-500 three-800">
+    <div>
+     <h4>LOCATIONS</h4>
+     <ul>
+      <li><a href="https://goo.gl/maps/ackM7R4rcRLi1jZt5">Kensington</a></li>
+      <li><a href="https://goo.gl/maps/m2HtWPFPsLzbQY3H9">Bristol</a></li>
+      <li><a href="https://goo.gl/maps/oWHbn282epon5HVy5">Cardiff</a></li>
+      <li><a href="https://goo.gl/maps/oSjybin5oxbctRpZ8">Cheltenham</a></li>
+      <li><A href="https://goo.gl/maps/UdNyMDvy7nvJ7L3S9">Manchester</a></li>
+      <li><a href="https://goo.gl/maps/5gFHCAFgSz9Fmkv1A">Richmond</a></li>
+      <li><a href="https://goo.gl/maps/4VpyCh5g8UwELSeCA">York</a></li>
+     </ul>
+    </div>
+    <div>
+     <h4>COMPANY</h4>
+     <ul>
+      <li><a href="https://www.caci.co.uk/legal/">Legal</a></li>
+      <li><a href="https://www.caci.co.uk/accessibility/">Accessibility</a></li>
+      <li><a href="https://www.caci.co.uk/data-privacy/">Data & Privacy</a></li>
+      <li><a href="https://www.caci.co.uk/uk-tax/">UK Tax</a></li>
+      <li><a href="https://www.caci.co.uk/environmental-policy/">Environmental Policy</a></li>
+      <li><a href="https://www.caci.co.uk/gender-pay-gap/">Gender Pay Gap</a></li>
+      <li><a href="https://www.caci.co.uk/modern-slavery/">Modern Slavery</a></li>
+      <li><a href="https://www.caci.co.uk/supplier-code-of-conduct/">Supplier Code of Conduct</a></li>
+     </ul>
+    </div>
+    <div>
+     <p>&copy; 2023 CACI Limited. All rights reserved.<p>
+     <p>CACI Limited (Registered number 01649776) is registered in England and Wales with its registered office at CACI House, Avonmore Road, London, W14 8TS.</p>
+    </div>
+   </div>
+  </footer>
+<script>
+// Picnic CSS Transparent Navigation Bar
+var nav = document.querySelector('nav');
+function navScroll(){
+  var className = 'transparent';
+  var top = window.scrollY ? window.scrollY : document.documentElement.scrollTop;
+  if (top > 0) {
+    nav.classList.remove(className);
+    [].forEach.call(document.querySelectorAll('[data-src]'), function(iframe){
+      iframe.setAttribute('src', iframe.getAttribute('data-src'));
+      iframe.removeAttribute('data-src');
+    });
+  } else {
+    nav.classList.add('transparent');
+    nav.classList.add(className);
+  }
+};
+window.onscroll = navScroll;
+navScroll();
+setTimeout(function(){ nav.classList.remove('loading'); }, 10);
+
+// Open External Links in new browser window
+$(document.links).filter(function() {
+ return this.hostname != window.location.hostname;
+}).attr('target', '_blank');
+</script>
+ </body>
+</html>
