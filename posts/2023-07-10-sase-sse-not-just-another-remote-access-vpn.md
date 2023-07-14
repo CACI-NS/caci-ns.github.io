@@ -48,7 +48,7 @@ It's a Solution no longer fit for the current Application Landscape of Public Cl
 
 > The 80/20 has flipped; now more of your Business Applications have found themselves outside your Network Edge castle, and beyond the security afforded by your moat. The drawbridge is firmly down, and the people are fleeing your castle-and-moat WAN architectures
 
-## Future Mode of Operation
+## Future Mode of Operation (FMO)
 Let's level-set a bit - you are still a Big Enterprise, so Digital Transformation isn't going to be quick, and you've still got Legacy and on-premises Workloads like Mainframes that can't move to the Public Cloud for lots of sensible financial, compliance and business reasons. However, now you've started to (more aggressively than you'd like to, thanks to Coronavirus):
 
 * Move Commodified Applications (i.e. all the Apps that were never specific to YourCo PLC in the first place -  Collaboration, Document Hosting, ERP and CRM, etc) to the Public Cloud
