@@ -4,7 +4,7 @@
   <title>{{ page_title }}</title>
   <meta charset="utf-8">
   {% if post is defined %}
-  <meta http-equiv="refresh" content="1; URL='https://caci.tech/{{ post.category }}/{{ post.title|lower|replace(' ', '-') }}'"> 
+  <meta http-equiv="refresh" content="1; URL='https://caci.tech/{{ post.category }}/{{ post.slug }}'"> 
   {% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ seo.description }}">
@@ -19,7 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   {% if post is defined %}
   <!-- Migration Canonical -->
-  <link rel="canonical" href="https://caci.tech/{{ post.category }}/{{ post.title|lower|replace(' ', '-') }}">
+  <link rel="canonical" href="https://caci.tech/{{ post.category }}/{{ post.slug }}">
   {% endif %}
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
