@@ -4,7 +4,12 @@
   <title>{{ page_title }}</title>
   <meta charset="utf-8">
   {% if post is defined %}
+  <!-- Migration Redirect -->
   <meta http-equiv="refresh" content="1; URL='https://caci.tech/{{ post.category }}/{{ post.slug }}'"> 
+  {% endif %}
+  {% if seo.url == 'https://caci-ns.github.io' %}
+  <!-- Migration Redirect -->
+  <meta http-equiv="refresh" content="1; URL='https://caci.tech/blog/'"> 
   {% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ seo.description }}">
@@ -20,6 +25,9 @@
   {% if post is defined %}
   <!-- Migration Canonical -->
   <link rel="canonical" href="https://caci.tech/{{ post.category }}/{{ post.slug }}">
+  {% endif %}
+  {% if seo.url == 'https://caci-ns.github.io' %}
+  <link rel="canonical" href="https://caci.tech/blog/">
   {% endif %}
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
