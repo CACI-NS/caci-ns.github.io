@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>How much does a TLD affect your Web Application performance - CACI Network Services Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Time was the Internet consisted of just a few Top Level Domains (TLDs) - ">
+  <meta name="author" content="CACI Network Services">
+  <meta name="robots" content="index,follow">
+  <!-- Picnic CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" type="text/css">
+  <link rel="stylesheet" href="/site.css" type="text/css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- Migration Canonical -->
+  <link rel="canonical" href="https://caci-ns.github.io/devops/tld-affects-web-app-performance">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <!-- Open Graph -->
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How much does a TLD affect your Web Application performance">
+  <meta property="og:description" content="Time was the Internet consisted of just a few Top Level Domains (TLDs) - ">
+  <meta property="og:image" content="https://caci-ns.github.io/img/tld-impact-on-dns-performance.jpg">
+  <meta property="og:url" content="https://caci-ns.github.io/devops/tld-affects-web-app-performance/">
+  <meta property="og:site_name" content="CACI Network Services Blog">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How much does a TLD affect your Web Application performance">
+  <meta name="twitter:url" content="https://caci-ns.github.io/devops/tld-affects-web-app-performance/">
+  <meta name="twitter:image" content="https://caci-ns.github.io/img/tld-impact-on-dns-performance.jpg">
+  <meta name="twitter:description" content="Time was the Internet consisted of just a few Top Level Domains (TLDs) - ">
+  <meta name="twitter:site" content="@caci_ns">
+  <meta name="twitter:creator" content="@caci_ns">
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","description":"Time was the Internet consisted of just a few Top Level Domains (TLDs) - ","headline":"How much does a TLD affect your Web Application performance","name":"CACI Network Services Blog","url":"https://caci-ns.github.io/devops/tld-affects-web-app-performance/"}</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMSMNQKWSJ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XMSMNQKWSJ');
+  </script>
+ </head>
+ <body>
+  <nav class="transparent">
+   <a href="/" class="brand"><span>CACI Network Services</span></a><input id="bmenu" type="checkbox" class="show">
+   <label for="bmenu" class="burger toggle pseudo button">menu</label>
+   <div class="menu">
+    <a href="https://github.com/CACI-NS" target="_blank" class="pseudo button">GitHub</a>
+    <a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" class="pseudo button">LinkedIn</a>
+    <a href="/categories/" class="pseudo button">Categories</a>
+    <a href="https://info.caci.co.uk/contact-us-network-services" target="_blank" class="button">Contact Us</a>
+   </div>
+  </nav>
+  <main>
+   <header class="hero">
+    <div class="content">
+     <h1>How much does a TLD affect your Web Application performance</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    <p class="info">
+     <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Aug 07, 2023</span>
+     <span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;devops</span>
+     <span><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;<a href="https://twitter.com/caci_ns">Twitter</a></span>
+     <span><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/CACI-NS">GitHub</a></span>
+     <span><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<a href="mailto:info@caci.co.uk?subject=Help%20from%20Network%20Services">info@caci.co.uk</a></span>
+    </p>
+    <p>Time was the Internet consisted of just a few Top Level Domains (TLDs) - <code>.com</code>, <code>.net</code>, <code>.org</code> and a few others - but not anymore. <a href="https://tld-list.com">TLD-List</a> reports there are now over <strong>3,745</strong> domain extensions and growing, with even some brands having their own Organisation Extensions such as <code>.barclays</code> and <code>.bbc</code> in use for Careers Sites, Product Pages and more.</p>
+
+<p>As well as their obvious and <a href="https://www.semrush.com/blog/will-using-alternate-tlds-affect-your-seo-negatively/">well-documented impact</a> on <abbr title="Search Engine Optimisation">SEO</abbr>, did you know they can also <em>negatively</em> impact your Website Performance - particularly on Load Times and <abbr title="Time To First Byte">TTFB</abbr>?</p>
+
+<p><img src="/img/tld-impact-on-dns-performance.jpg" alt="Measuring the impact of TLD on DNS performance" /></p>
+
+<p>We'll investigate how we replatformed some of our web assets to overcome an issue with SEO Performance we didn't even know we were having.</p>
+
+<h2>Background on the roots of DNS</h2>
+
+<p><em>(Yes it's a pun, yes we're proud of that if you got it. Yes, we are <a href="https://www.jobserve.com/gb/en/listings/employers/caci-network-services/?lid=6f0fd8f357">hiring</a>...)</em></p>
+
+<p>DNS - or Domain Name System - is an often overlooked part of the Internet today, but is very much a key building block to the rest of the Web. Before we can discuss why differing TLDs have impact on performance, it is useful to have some grounding in DNS concepts first.</p>
+
+<p>At its heart, DNS is a <a href="https://en.wikipedia.org/wiki/Tree_structure">tree hierarchy</a> - with an invisible <code>dot</code> as the mandatory root. At a base level, the main job of DNS is to resolve a domain such as <code>www.google.com</code> to an IPv4 or IPv6 Address such as <code>8.8.8.8</code> for TCP/IP to start the packet connection process to.</p>
+
+<p>Let's explore this with the well-known subdomain <code>calendar.google.com</code>. Firstly, although you don't type this with the suffixed dot (<code>.</code>), it is very much there. Don't believe us? Try this in a Command Prompt:</p>
+
+<p><code>ping calendar.google.com.</code></p>
+
+<p>Here's what we get:</p>
+
+<div class="codehilite">
+<pre><span></span><code>ping calendar.google.com.
+
+Pinging calendar.google.com <span class="o">[</span><span class="m">142</span>.250.180.14<span class="o">]</span> with <span class="m">32</span> bytes of data:
+Reply from <span class="m">142</span>.250.180.14: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> <span class="nv">time</span><span class="o">=</span>7ms <span class="nv">TTL</span><span class="o">=</span><span class="m">119</span>
+
+Ping statistics <span class="k">for</span> <span class="m">142</span>.250.180.14:
+    Packets: <span class="nv">Sent</span> <span class="o">=</span> <span class="m">1</span>, <span class="nv">Received</span> <span class="o">=</span> <span class="m">1</span>, <span class="nv">Lost</span> <span class="o">=</span> <span class="m">0</span> <span class="o">(</span><span class="m">0</span>% loss<span class="o">)</span>,
+Approximate round trip <span class="nb">times</span> in milli-seconds:
+    <span class="nv">Minimum</span> <span class="o">=</span> 7ms, <span class="nv">Maximum</span> <span class="o">=</span> 7ms, <span class="nv">Average</span> <span class="o">=</span> 7ms
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>ProTip</strong>: Ever tried to <code>ping</code> or <code>nslookup</code> something external like <code>website.com</code> only to have the result come back as <code>website.com.internal.corp.acmeco.local</code> on you? Same difference; Windows commands like <code>nslookup</code> assume <em>everything</em> is a subdomain of your DNS Suffix Search List if you don't suffix a "." (dot) at the end. Most Applications like Web Browsers automagically do this in the background for you; much the same as they silently add<code>:443</code> to the end of HTTPS websites</p>
+</blockquote>
+
+<p>If we deconstruct <code>calendar.google.com</code>, and process it right-to-left from the perspective of the DNS Tree Hierarchy, it's made up of:</p>
+
+<ul>
+<li><strong>Root</strong> - <code>.</code> (invisibly added in)</li>
+<li><strong>Top Level Domain (TLD)</strong> - <code>com</code></li>
+<li><strong>Domain</strong> - <code>google</code></li>
+<li><strong>Subdomain</strong> - <code>calendar</code></li>
+</ul>
+
+<p>The hierarchy is important because each layer informs which signpost needs to be used for the IP Address Lookup up the tree. Name Servers (or "NS") are used to act as the signpost for Domain Name to IP Address resolution. There are two main "types" of Name Server (DNS Purists will come for us - we know, we know...):</p>
+
+<ul>
+<li><strong>Root Zone (Internet Bodies)</strong>
+<ul>
+<li>Run by organisations similar to <a href="https://www.iana.org"><abbr title="Internet Assigned Numbers Authority">IANA</abbr></a> and <a href="https://www.isc.org"><abbr title="Internet Systems Consortium">ISC</abbr></a> for the good of the wider Internet itself, as a going concern</li>
+</ul></li>
+<li><strong>DNS Zone (Registrars and Organisations)</strong>
+<ul>
+<li>Run by either Domain Registrars such as <a href="https://www.namecheap.com">Namecheap</a>, <abbr title="Internet Service Providers">ISP</abbr>s and <abbr title="Content Delivery Network">CDN</abbr>s such as <a href="https://www.cloudflare.com">Cloudflare</a> or End User Organisations themselves - for the Organisation's self-interest</li>
+</ul></li>
+</ul>
+
+<p>This distinction is important when it comes to the level of detail signposted by a given Name Server at any given level of the DNS Hierarchy.</p>
+
+<h2>Function of a Name Server</h2>
+
+<p>The level of a Name Server within the hierarchy determines the amount of information it returns, and normally the higher the level (towards the root), the less information it gives (is just likely to signpost to another Name Server with the detailed IP information). Using the same example, let's see this in practice with the same <code>calendar.google.com</code> example and walk-through the hierarchy:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Element</th>
+  <th>Level</th>
+  <th>Response</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>.</code> (dot)</td>
+  <td>Root</td>
+  <td><code>com is served by a.gtld-servers.net</code></td>
+  <td>Notional "response" to show concept</td>
+</tr>
+<tr>
+  <td><code>google.com</code></td>
+  <td>TLD</td>
+  <td><code>Google.com is served by Name Server ns1.google.com</code></td>
+  <td>This is the response that (via the <a href="https://www.cloudflare.com/en-gb/learning/dns/glossary/dns-root-server/">DNS Resolution Chain</a>) <code>a.gtld-servers.net</code> gave</td>
+</tr>
+<tr>
+  <td><code>calendar.google.com</code></td>
+  <td>Subdomain</td>
+  <td><code>calendar.google.com is available at 142.250.187.238</code></td>
+  <td>This is the response that <code>ns1.google.com</code> gave</td>
+</tr>
+</tbody>
+</table>
+
+<p>As can be seen, the function of each upper-level of the hierarchy is ultimately to point to another signpost element lower-down in the hierarchy that knows the IP Address answer. The reason for this is scaling - it wouldn't scale to have a flat hierarchy of all the <a href="https://colorlib.com/wp/domain-name-statistics/">628.5 million registered Domain Names</a> in the Web, let alone the numerous hundreds or thousands of subdomains <em>each</em> of those could have.</p>
+
+<blockquote>
+  <p>In practice the Client rarely probes the <em>actual</em> Authoritative DNS Resolver for a given DNS Zone, usually the DNS Recursion Chain is such that a Client resolves against a Caching DNS Server run by their downstream ISP, CDN, Cloud or other DNS Provider. Here caching plays a role to offload lookup stress on the DNS Ecosystem; the above example is simplified to show the concept in isolation of the impact of DNS optimisations such as DNS Caching and Anycast</p>
+</blockquote>
+
+<h2>The Famous Thirteen</h2>
+
+<p>You may have been around the Interwebs long enough to have heard of the <a href="https://www.cloudflare.com/en-gb/learning/dns/glossary/dns-root-server/">infamous "13" Root Servers</a> which effectively act as the Name Server phonebook for the original TLDs such as <code>.com</code> and <code>.net</code>, and are currently:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Name Server</th>
+  <th>IPv4 Address</th>
+  <th>IPv6 Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>a.gtld-servers.net</td>
+  <td>192.5.6.30</td>
+  <td>2001:503:a83e:0:0:0:2:30</td>
+</tr>
+<tr>
+  <td>b.gtld-servers.net</td>
+  <td>192.33.14.30</td>
+  <td>2001:503:231d:0:0:0:2:30</td>
+</tr>
+<tr>
+  <td>c.gtld-servers.net</td>
+  <td>192.26.92.30</td>
+  <td>2001:503:83eb:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>d.gtld-servers.net</td>
+  <td>192.31.80.30</td>
+  <td>2001:500:856e:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>e.gtld-servers.net</td>
+  <td>192.12.94.30</td>
+  <td>2001:502:1ca1:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>f.gtld-servers.net</td>
+  <td>192.35.51.30</td>
+  <td>2001:503:d414:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>g.gtld-servers.net</td>
+  <td>192.42.93.30</td>
+  <td>2001:503:eea3:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>h.gtld-servers.net</td>
+  <td>192.54.112.30</td>
+  <td>2001:502:8cc:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>i.gtld-servers.net</td>
+  <td>192.43.172.30</td>
+  <td>2001:503:39c1:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>j.gtld-servers.net</td>
+  <td>192.48.79.30</td>
+  <td>2001:502:7094:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>k.gtld-servers.net</td>
+  <td>192.52.178.30</td>
+  <td>2001:503:d2d:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>l.gtld-servers.net</td>
+  <td>192.41.162.30</td>
+  <td>2001:500:d937:0:0:0:0:30</td>
+</tr>
+<tr>
+  <td>m.gtld-servers.net</td>
+  <td>192.55.83.30</td>
+  <td>2001:501:b1f9:0:0:0:0:30</td>
+</tr>
+</tbody>
+</table>
+
+<p>As it turns out, these aren't the only Root Name Servers in town; there are an ever-increasing set of Root Servers to support the ever-increasing amount of TLDs proliferating today, as recorded by the <a href="https://www.iana.org/domains/root/db/">IANA Root Zone Database</a>.</p>
+
+<p>What's more, these aren't all created equal - as it turns out, not everyone is as passionate about DNS Performance optimisation as internet society organisations such as the <abbr title="Internet Engineering Task Force">IETF</abbr> are.</p>
+
+<p><img src="/img/how-can-it-be-600ms.png" alt="When Root DNS response time is 76% of your response time" /></p>
+
+<h2>Sometimes Root DNS is three quarters of the response time</h2>
+
+<p>Please, take a seat - it <em>shocked</em> us too. We were looking into why the response time of some parts of our previous <a href="https://caci.tech/careers/">Job Board</a> <code>cacins.careers</code> were so bad, and had just moved from using cURL commands into the awesome <a href="https://reqbin.com/curl/">ReqBin REST Testing Tool</a> when we spotted the above. Assuming no DNS Caching in play, of the <code>668ms</code> response time, DNS resolution took up a shocking <code>509ms</code> - or <strong>76%</strong> - of the entire HTTP <code>GET</code> process.</p>
+
+<blockquote>
+  <p><em>"Surely it's just us, surely other domains aren't affected as well?"</em></p>
+</blockquote>
+
+<blockquote>
+  <p><em>"It can't... you can't... five-HUNDRED-milliseconds?"</em></p>
+</blockquote>
+
+<blockquote>
+  <p><em>"You're making these quotes up just to make the Blog sound more plausible? I can't believe you'd do such a thing!"</em></p>
+</blockquote>
+
+<p>So the journey began. Using the <a href="https://www.iana.org/domains/root/db/">IANA Root Zone Database</a>, we undertook the following not-really-that-scientific process to check if it was indeed just us:</p>
+
+<ol>
+<li>Collate a bunch of TLDs operated by differing <a href="https://www.iana.org/domains/root">TLD Managers</a></li>
+<li>Perform a DNS Lookup to their associated Root DNS Server from the <a href="https://www.iana.org/domains/root/db/">IANA Root Zone Database</a></li>
+<li>Measure the time of this lookup in Windows using <code>powershell "Measure-Command { nslookup domain.tld. root.tld.server.tld. }"</code>
+<ul>
+<li>i.e. For <code>fast.com</code> this command was: <code>powershell "Measure-Command { nslookup fast.com. a.gtld-servers.net. }"</code></li>
+</ul></li>
+</ol>
+
+<p>Here's our quasi-scientific results:</p>
+
+<table>
+<thead>
+<tr>
+  <th>TLD</th>
+  <th>Domain</th>
+  <th>First Root DNS Server</th>
+  <th>TLD Manager</th>
+  <th>Lookup Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>ai</td>
+  <td><code>fast.ai</code></td>
+  <td><code>a.lactld.org</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/ai.html">Government of Anguilla</a></td>
+  <td>92ms</td>
+</tr>
+<tr>
+  <td>app</td>
+  <td><code>fast.app</code></td>
+  <td><code>ns-tld1.charlestonroadregistry.com</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/app.html">Charleston Road Registry Inc</a></td>
+  <td>88ms</td>
+</tr>
+<tr>
+  <td>blog</td>
+  <td><code>fast.blog</code></td>
+  <td><code>a.nic.blog</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/blog.html">Knock Knock WHOIS There LLC</a></td>
+  <td>116ms</td>
+</tr>
+<tr>
+  <td>careers</td>
+  <td><code>fast.careers</code></td>
+  <td><code>v0n0.nic.careers</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/careers.html">Binky Moon LLC</a></td>
+  <td>496ms</td>
+</tr>
+<tr>
+  <td>com</td>
+  <td><code>fast.com</code></td>
+  <td><code>a.gtld-servers.net</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/com.html">VeriSign Global Registry Services</a></td>
+  <td>58ms</td>
+</tr>
+<tr>
+  <td>co.uk</td>
+  <td><code>fast.co.uk</code></td>
+  <td><code>dns1.nic.uk</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/uk.html">Nominet UK</a></td>
+  <td>102ms</td>
+</tr>
+<tr>
+  <td>io</td>
+  <td><code>fast.io</code></td>
+  <td><code>a0.nic.io</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/io.html">Internet Computer Bureau Limited</a></td>
+  <td>62ms</td>
+</tr>
+<tr>
+  <td>net</td>
+  <td><code>fast.net</code></td>
+  <td><code>a.gtld-servers.net</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/com.html">VeriSign Global Registry Services</a></td>
+  <td>48ms</td>
+</tr>
+<tr>
+  <td>network</td>
+  <td><code>fast.network</code></td>
+  <td><code>v0n0.nic.network</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/network.html">Binky Moon LLC</a></td>
+  <td>482ms</td>
+</tr>
+<tr>
+  <td>org</td>
+  <td><code>fast.org</code></td>
+  <td><code>a0.org.afilias-nst.info</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/org.html">Public Internet Registry (PIR)</a></td>
+  <td>458ms</td>
+</tr>
+<tr>
+  <td>tech</td>
+  <td><code>fast.tech</code></td>
+  <td><code>a.nic.tech</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/tech.html">Radix FZC</a></td>
+  <td>95ms</td>
+</tr>
+<tr>
+  <td>training</td>
+  <td><code>fast.training</code></td>
+  <td><code>v0n0.nic.training</code></td>
+  <td><a href="https://www.iana.org/domains/root/db/training.html">Binky Moon LLC</a></td>
+  <td>488ms</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+  <p>We only picked the <code>fast</code> domain because we thought it would be most-likely to be registered across a selection of some technology-related TLDs and not give a false-positive with a NXDOMAIN response. Also maybe we want you to think we're really, really fast at doing things</p>
+</blockquote>
+
+<p>Clearly this isn't taking into the account the following:</p>
+
+<ul>
+<li>DNS Anycast affect on Root Name Server choice and availability</li>
+<li>DNS Anycast routing affect on geographic location</li>
+<li>DNS Recursion Chain affect on lookup Client (in reality an ISP, CDN, Cloud or dedicated DNS Name Server)</li>
+<li>DNS Caching of lookups (in reality an ISP, CD, Cloud or other downstream DNS Resolver will cache responses for a time)</li>
+<li>Appeasing the DNS Gods with your latest incantation...</li>
+</ul>
+
+<p>But does give some food for thought on the impact that a seemingly invisible part of <em>every</em> Web App request - the DNS Lookup - can have, and how such a low-level component such as choice of TLD can impact this. Turns out it's not just SEO that can be impacted by TLD choice.</p>
+<article class="card salesbox">
+ <i class="icon fa fa-comments" aria-hidden="true"></i>
+ <section>
+  <h3>Talk to our Experts</h3>
+  <p>Our in-house experts have architected, designed, built and automated some of the UK's largest Enterprise Networks and Data Centres. We've probably:</p>
+  <ul>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Networked it</li>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Designed it</li>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Automated it</li>
+  </ul>
+  <p class="cta"><a href="https://info.caci.co.uk/contact-us-network-services" class="button">Ask us how</a></p>
+ </section>
+</article>
+<h2>Need help with your own three-part DNS Murder Mystery?</h2>
+
+<p>At <a href="https://www.caci.co.uk/services/cloud-infrastructure/">CACI Network Services</a> we're well practiced in going full-blown <a href="https://en.wikipedia.org/wiki/Hercule_Poirot">Poirot</a> on a variety of DNS, Network and Cloud murder mystery investigations. We've completed so many we think we're in for a shot with being the guest stars on the next Midsomer Murders.</p>
+
+<p>In the meantime, if you'd like us to keep go all <a href="https://en.wikipedia.org/wiki/The_Pink_Panther">Pink Panther</a> on your very own Infrastructure Conundrum, we're all (pink) ears -  <a href="/contact/">get in touch</a> and let us help you go from Inspector Clouseau to clue-solved.</p>
+
+<p>And whatever you do, <em>don't</em> start humming the <a href="https://www.youtube.com/watch?v=HhHwnrlZRus">Pink Panther theme tune</a> in your head, you'll never get it out... Sorry. No really. Sorry.</p>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="flex one two-500 three-800">
+    <div>
+     <h4>LOCATIONS</h4>
+     <ul>
+      <li><a href="https://goo.gl/maps/ackM7R4rcRLi1jZt5">Kensington</a></li>
+      <li><a href="https://goo.gl/maps/m2HtWPFPsLzbQY3H9">Bristol</a></li>
+      <li><a href="https://goo.gl/maps/oWHbn282epon5HVy5">Cardiff</a></li>
+      <li><a href="https://goo.gl/maps/oSjybin5oxbctRpZ8">Cheltenham</a></li>
+      <li><A href="https://goo.gl/maps/UdNyMDvy7nvJ7L3S9">Manchester</a></li>
+      <li><a href="https://goo.gl/maps/5gFHCAFgSz9Fmkv1A">Richmond</a></li>
+      <li><a href="https://goo.gl/maps/4VpyCh5g8UwELSeCA">York</a></li>
+     </ul>
+    </div>
+    <div>
+     <h4>COMPANY</h4>
+     <ul>
+      <li><a href="https://www.caci.co.uk/legal/">Legal</a></li>
+      <li><a href="https://www.caci.co.uk/accessibility/">Accessibility</a></li>
+      <li><a href="https://www.caci.co.uk/data-privacy/">Data & Privacy</a></li>
+      <li><a href="https://www.caci.co.uk/uk-tax/">UK Tax</a></li>
+      <li><a href="https://www.caci.co.uk/environmental-policy/">Environmental Policy</a></li>
+      <li><a href="https://www.caci.co.uk/gender-pay-gap/">Gender Pay Gap</a></li>
+      <li><a href="https://www.caci.co.uk/modern-slavery/">Modern Slavery</a></li>
+      <li><a href="https://www.caci.co.uk/supplier-code-of-conduct/">Supplier Code of Conduct</a></li>
+     </ul>
+    </div>
+    <div class="brandfooter">
+     <a href="/" title="CACI Network Services">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="74" height="32" viewBox="0 0 333.871 145.373">
+       <g transform="translate(-92.188 -48.008)">
+        <path fill="#ffffff" d="M192.064,49.831l-.049,37.747c-.146,1.463-1.284,1.634-1.474.087-1.447-20.978-26.075-40.5-49.175-32.127-27.559,9.99-31.348,40.358-28.357,63.792,1.186,9.287,3.726,17.741,10.145,25.668,6.451,7.976,15.3,13.3,26.034,14.232,17.453,1.5,33.025-6.53,42.695-20.086.252-.366,1.067.19.953.421-10.769,24.257-45,34.936-70.376,20.243-33.2-19.222-38.686-59.089-18.446-88.155,16.65-23.923,50.931-30.393,77.652-16.194,4.033,2.141,6.967-2.358,8.98-5.637Zm219.61,105.3c0,5.6,10.041,6.665,13.377,6.6v2.521H379.123v-2.521c2.741.062,13.993-1,13.993-6.6V58.192c0-7.577-12.467-6.663-13.993-6.937V48.726H425.05v2.532c-1.52.274-13.377-.784-13.377,6.937Zm-35.28-105.3-.052,37.747c-.155,1.463-1.292,1.634-1.482.087-1.436-20.978-26.067-40.5-49.167-32.127-27.557,9.99-31.351,40.355-28.36,63.792,1.189,9.287,3.732,17.741,10.144,25.668,6.456,7.976,15.3,13.3,26.031,14.232,17.456,1.5,33.028-6.53,42.695-20.086.252-.366,1.075.19.961.421-10.78,24.257-45,34.936-70.382,20.243-33.2-19.222-38.684-59.089-18.438-88.155C304.991,47.733,339.278,41.26,366,55.459c4.027,2.141,6.956-2.358,8.977-5.637Z"></path>
+        <path fill="#ffffff" d="M776.969,127.956l16.4-39.351,17.442,39.351Zm68.645,37.452L798.156,57.523,750.7,165.258c-1.656,3.064-3.767,4.247-7.447,5.471v1.748l30.569.016v-1.761c-6.481-.991-14.245-1.921-11.86-8.818l11.881-26.444.033-.1H814.1l.035.076L826.3,163.435c2.583,6.386-7.669,7.306-12.324,7.3V172.5l42.13-.024v-1.824c-2.583,0-8.055-.079-10.489-5.246" transform="translate(-559.561 -8.178)"></path>
+        <path fill="#ed1b2d" d="M139.7,1003.565H466.9v11.072H139.7Z" transform="translate(-40.836 -821.257)"></path>
+       </g>
+      </svg>
+     </a>
+     <p>&copy; 2023 CACI Limited. All rights reserved.<p>
+     <p class="disclaimer">CACI Limited (Registered number 01649776) is registered in England and Wales with its registered office at CACI House, Avonmore Road, London, W14 8TS.</p>
+     <p class="socials"><a href="https://github.com/CACI-NS" target="_blank" title="GitHub"><i class="fa fa-2x fa-github" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/caci_ns" target="_blank" title="Twitter"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" title="LinkedIn"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a></p>
+    </div>
+   </div>
+  </footer>
+  <!-- JQuery JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/site.js"></script>
+ </body>
+</html>
