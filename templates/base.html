@@ -1,33 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <title>{{ page_title }}</title>
+  <title>{{ seo.page_title }}</title>
   <meta charset="utf-8">
-  {% if post is defined %}
-  <!-- Migration Redirect -->
-  <!-- <meta http-equiv="refresh" content="1; URL='https://caci.tech/{{ post.category }}/{{ post.slug }}'">  -->
-  {% endif %}
-  {% if seo.url == 'https://caci-ns.github.io' %}
-  <!-- Migration Redirect -->
-  <!-- <meta http-equiv="refresh" content="1; URL='https://caci.tech/blog/'">  -->
-  {% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ seo.description }}">
   <meta name="author" content="CACI Network Services">
-  <meta name="robots" content="noindex,nofollow">
+  <meta name="robots" content="index,follow">
   <!-- Picnic CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" type="text/css">
   <link rel="stylesheet" href="/site.css" type="text/css">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <!-- JQuery JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   {% if post is defined %}
   <!-- Migration Canonical -->
-  <link rel="canonical" href="https://caci.tech/{{ post.category }}/{{ post.slug }}">
+  <link rel="canonical" href="https://caci-ns.github.io/{{ post.category }}/{{ post.slug }}">
   {% endif %}
   {% if seo.url == 'https://caci-ns.github.io' %}
-  <link rel="canonical" href="https://caci.tech/blog/">
+  <link rel="canonical" href="https://caci-ns.github.io">
   {% endif %}
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -50,11 +40,7 @@
   <meta name="twitter:site" content="@caci_ns">
   <meta name="twitter:creator" content="@caci_ns">
   <!-- JSON-LD Schema -->
-  {% if seo.type == 'Article' %}
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"{{ seo.type }}","description":"{{ seo.description }}","headline":"{{ seo.title }}","name":"{{ seo.title }} - {{ seo.name }}","url":"{{ seo.url }}"}</script>
-  {% else %}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"{{ seo.type }}","description":"{{ seo.description }}","headline":"{{ seo.title }}","name":"{{ seo.name }}","url":"{{ seo.url }}"}</script>
-  {% endif %}
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMSMNQKWSJ"></script>
   <script>
@@ -71,9 +57,8 @@
    <div class="menu">
     <a href="https://github.com/CACI-NS" target="_blank" class="pseudo button">GitHub</a>
     <a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" class="pseudo button">LinkedIn</a>
-    <a href="/about/" class="pseudo button">About</a>
     <a href="/categories/" class="pseudo button">Categories</a>
-    <a href="https://cacins.careers" target="_blank" class="button">Careers</a>
+    <a href="https://info.caci.co.uk/contact-us-network-services" target="_blank" class="button">Contact Us</a>
    </div>
   </nav>
   <main>
@@ -107,37 +92,24 @@
       <li><a href="https://www.caci.co.uk/supplier-code-of-conduct/">Supplier Code of Conduct</a></li>
      </ul>
     </div>
-    <div>
+    <div class="brandfooter">
+     <a href="/" title="CACI Network Services">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="74" height="32" viewBox="0 0 333.871 145.373">
+       <g transform="translate(-92.188 -48.008)">
+        <path fill="#ffffff" d="M192.064,49.831l-.049,37.747c-.146,1.463-1.284,1.634-1.474.087-1.447-20.978-26.075-40.5-49.175-32.127-27.559,9.99-31.348,40.358-28.357,63.792,1.186,9.287,3.726,17.741,10.145,25.668,6.451,7.976,15.3,13.3,26.034,14.232,17.453,1.5,33.025-6.53,42.695-20.086.252-.366,1.067.19.953.421-10.769,24.257-45,34.936-70.376,20.243-33.2-19.222-38.686-59.089-18.446-88.155,16.65-23.923,50.931-30.393,77.652-16.194,4.033,2.141,6.967-2.358,8.98-5.637Zm219.61,105.3c0,5.6,10.041,6.665,13.377,6.6v2.521H379.123v-2.521c2.741.062,13.993-1,13.993-6.6V58.192c0-7.577-12.467-6.663-13.993-6.937V48.726H425.05v2.532c-1.52.274-13.377-.784-13.377,6.937Zm-35.28-105.3-.052,37.747c-.155,1.463-1.292,1.634-1.482.087-1.436-20.978-26.067-40.5-49.167-32.127-27.557,9.99-31.351,40.355-28.36,63.792,1.189,9.287,3.732,17.741,10.144,25.668,6.456,7.976,15.3,13.3,26.031,14.232,17.456,1.5,33.028-6.53,42.695-20.086.252-.366,1.075.19.961.421-10.78,24.257-45,34.936-70.382,20.243-33.2-19.222-38.684-59.089-18.438-88.155C304.991,47.733,339.278,41.26,366,55.459c4.027,2.141,6.956-2.358,8.977-5.637Z"></path>
+        <path fill="#ffffff" d="M776.969,127.956l16.4-39.351,17.442,39.351Zm68.645,37.452L798.156,57.523,750.7,165.258c-1.656,3.064-3.767,4.247-7.447,5.471v1.748l30.569.016v-1.761c-6.481-.991-14.245-1.921-11.86-8.818l11.881-26.444.033-.1H814.1l.035.076L826.3,163.435c2.583,6.386-7.669,7.306-12.324,7.3V172.5l42.13-.024v-1.824c-2.583,0-8.055-.079-10.489-5.246" transform="translate(-559.561 -8.178)"></path>
+        <path fill="#ed1b2d" d="M139.7,1003.565H466.9v11.072H139.7Z" transform="translate(-40.836 -821.257)"></path>
+       </g>
+      </svg>
+     </a>
      <p>&copy; {{ year }} CACI Limited. All rights reserved.<p>
-     <p>CACI Limited (Registered number 01649776) is registered in England and Wales with its registered office at CACI House, Avonmore Road, London, W14 8TS.</p>
+     <p class="disclaimer">CACI Limited (Registered number 01649776) is registered in England and Wales with its registered office at CACI House, Avonmore Road, London, W14 8TS.</p>
+     <p class="socials"><a href="https://github.com/CACI-NS" target="_blank" title="GitHub"><i class="fa fa-2x fa-github" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/caci_ns" target="_blank" title="Twitter"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" title="LinkedIn"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a></p>
     </div>
    </div>
   </footer>
-<script>
-// Picnic CSS Transparent Navigation Bar
-var nav = document.querySelector('nav');
-function navScroll(){
-  var className = 'transparent';
-  var top = window.scrollY ? window.scrollY : document.documentElement.scrollTop;
-  if (top > 0) {
-    nav.classList.remove(className);
-    [].forEach.call(document.querySelectorAll('[data-src]'), function(iframe){
-      iframe.setAttribute('src', iframe.getAttribute('data-src'));
-      iframe.removeAttribute('data-src');
-    });
-  } else {
-    nav.classList.add('transparent');
-    nav.classList.add(className);
-  }
-};
-window.onscroll = navScroll;
-navScroll();
-setTimeout(function(){ nav.classList.remove('loading'); }, 10);
-
-// Open External Links in new browser window
-$(document.links).filter(function() {
- return this.hostname != window.location.hostname;
-}).attr('target', '_blank');
-</script>
+  <!-- JQuery JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/site.js"></script>
  </body>
 </html>

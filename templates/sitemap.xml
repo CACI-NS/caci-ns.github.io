@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://caci-ns.github.io/</loc>
-  <changefreq>always</changefreq>
+  <loc>{{ site_url }}</loc>
+  <changefreq>monthly</changefreq>
  </url>
+ {% for permalink in permalinks %}
  <url>
-  <loc>https://caci-ns.github.io/categories/</loc>
-  <changefreq>always</changefreq>
- </url>
- {% for page in pages %}
- <url>
-  <loc>https://caci-ns.github.io{{ page.permalink }}</loc>
-  <changefreq>always</changefreq>
- </url>
- {% endfor %}
- {% for post in posts %}
- <url>
-  <loc>https://caci-ns.github.io/{{ post.category }}/{{ post.date_raw[0:4] }}/{{ post.date_raw[5:7] }}/{{ post.date_raw[8:10] }}/{{ post.slug }}.html</loc>
+  <loc>{{ site_url }}{{ permalink }}</loc>
   <changefreq>always</changefreq>
  </url>
  {% endfor %}

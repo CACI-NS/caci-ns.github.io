@@ -10,15 +10,13 @@ Note that GitHub has limitations around the folder name used for public hosting,
 `site_generator.py` is the Static Site Generator and will be triggered via GitHub Actions on successful trigger of a `git push` from local source changes.
 
 ## Blog Content
-Two types of content (pages) are possible on the Blog:
+One types of content (pages) is possible on the Blog:
 
 1. Blog Posts
-2. Blog Pages
 
 Both are specified in [Markdown format](https://www.markdownguide.org/cheat-sheet/), which can render HTML, Images, Bullet Points, Bold Text and so on. The Static Site Generator (SSG) generates these by checking for corresponding `.md` Markdown-formatted text files in the following directories in the Git Repo root:
 
 * posts/
-* pages/
 
 ### Posts
 Each Post should have a unique alphanumeric-only filename ending in `.md`, in format similar to `year-month-day-title.md`, such as:
@@ -53,33 +51,6 @@ Headings within the Blog Post Markdown should start at Level 2 (`##`) as a top-l
 
 Headings can be lower-level than this (such as Level 3 `###` or Level 4 `####`), but can **NOT** be higher-level than this (i.e. do *NOT* use Level 1 `#` headings). 
 
-### Pages
-
-Each Page should have a unique alphanumeric-only filename ending in `.md`, in format similar to `title.md`, such as:
-
-* `about.md`
-
-Do **NOT** use `categories` as a Page Name, as this is a special page rendered elsewhere.
-
-Within the Markdown file, the frontmatter section (the lines in between `---` delimiters) should contain the following `key`:`value` attributes:
-
-* `title`
-  * A human-English, properly-capitalised title for the Blog Page
-* `permalink`
-  * Alphanumeric-only (letters, numbers and hyphens only) summary of the title, starting and ending with a forward slash `/` - this becomes the URL for the Blog Page
-
-Example frontmatter might look like the below:
-
-```YAML
----
-title: About
-permalink: /about/
----
-```
-Headings within the Blog Page Markdown should start at Level 2 (`##`) as a top-level heading.
-
-Headings can be lower-level than this (such as Level 3 `###` or Level 4 `####`), but can **NOT** be higher-level than this (i.e. do *NOT* use Level 1 `#` headings). 
-
 ## Template Files
 These are present within the Git Repo `templates` directory and are Jinja2 Templates which are used by the Static Site Generator (SSG) script `site_generator.py`:
 
@@ -97,10 +68,12 @@ These are present within the Git Repo `docs` directory and should be modified lo
 * img/ - Folder of static site images and assets
   * background.jpg - This is used for the "hero" Header on each website page
 * apple-touch-icon.png - This is the Apple Touch icon for the website
+* card.png - This is the Twitter/OpenGraph card picture for the website
 * favicon.ico - This is the Browser Favourite icon for the website
 * favicon-16x16.png - This is a small PNG version of the Browser Favourite icon for the website
 * favicon-32x32.png - This is a large PNG version of the Browser Favourite icon for the website
 * site.css - This defines the CSS Style Sheet to colour and theme the website
+* site.js - This defines the JavaScript code to frontend render the website
 
 Other folders are generated based on the SSG generating the required folders for the Blog Pages and Blog Posts.
 

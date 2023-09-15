@@ -11,7 +11,7 @@
     <ul>
      {% for post in posts %}
       {% if post['category'] == cat %}
-       <li><a href="https://caci-ns.github.io/{{ post.category }}/{{ post.year }}/{{ post.month }}/{{ post.day }}/{{ post.slug }}.html">{{ post.title }}</a></li>
+       <li><a href="/{{ post.category }}/{{ post.slug }}/">{{ post.title }}</a></li>
       {% endif %}
      {% endfor %}
     </ul>

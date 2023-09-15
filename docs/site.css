@@ -1,5 +1,8 @@
 body {
- background-color: white;
+ background-color: #232629;
+}
+main {
+ background-color: #fff;
 }
 p {
  margin: 0 0.5em 0.2em 0.2em;
@@ -7,10 +10,27 @@ p {
 }
 blockquote {
  margin: 0 0.5em 1em 1.5em;
- padding-bottom: 0 !important;
- font-style: italic;
- color: #777;
- background-color: #fcfcfc
+ padding: 1em;
+ border-left: 4px solid #6e72e0;
+ border-radius: 0.2em;
+ font-weight: bold;
+ color: #333;
+ background-color: #f3f3f6;
+ box-shadow: none;
+}
+pre {
+ margin: 0 0.5em 1em 0.8em;
+ background-color: #081b4b;
+ color: #fff;
+ border-radius: 0.2em;
+}
+pre code {
+ background-color: #081b4b;
+ color: #fff;
+}
+code {
+ padding: 0.2em 0.4em;
+ border-radius: 0.2em;
 }
 @media (max-width: 1200px) {
  h1 {
@@ -118,6 +138,18 @@ nav.transparent{
  padding: 0;
  list-style-type: none;
 }
+.footer .brandfooter {
+ margin: 0.7em 0 0 0;
+}
+.footer p {
+ margin-top: 0.3em;
+}
+.footer .disclaimer {
+ color: #777;
+}
+footer .socials {
+ margin-top: 1em;
+}
 .visual {
  text-align: left;
  width: 100%;
@@ -126,6 +158,35 @@ nav.transparent{
  padding: 1em 0.2em 0 0.2em;
 }
 .visual a:hover {
+ font-weight: bold;
+}
+i.tick {
+ color: #2ecc40;
+}
+.salesbox {
+ margin: 1em auto;
+ padding-bottom: 1em;
+ width: 800px;
+ border-radius: 1em !important;
+ background-color: #40425e;
+ /*background-color: #8287eb;*/
+ color: #fff;
+ font-size: 0.9em;
+}
+.salesbox i.icon {
+ float: left;
+ color: #fff;
+ font-size: 100px !important;
+}
+.salesbox ul, .capabilities {
+ list-style-type: none;
+}
+.salesbox p.cta {
+ text-align: center;
+}
+.salesbox .button {
+ background-color: #fae166;
+ color: #000;
  font-weight: bold;
 }
 .card {

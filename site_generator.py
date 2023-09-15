@@ -1,214 +1,142 @@
 # Author: CACI NS Team
-# Date: 25-May-2023
+# Date: 15-Sep-2023
 # Description: CACI NS Blog Static Site Generator
+from jinja2 import Environment, FileSystemLoader
+from markdown2 import markdown
 import os
 import re
 import datetime
-from jinja2 import Environment, FileSystemLoader
-from markdown2 import markdown
 
-# Define constants
-OUTPUT_DIRECTORY = 'docs/' # Remote Git Repo folder name that contains Blog HTML files
+# Settings
+SITE_URL = 'https://caci-ns.github.io' # Root website URL
+SEO_NAME = 'CACI Network Services Blog' # SEO Site Name
+SEO_DESCRIPTION = 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance' # SEO Site Description text
+SEO_CARD_IMAGE = 'https://caci-ns.github.io/card.png' # SEO OpenGraph/LD Card Image URL
+OUTPUT_DIRECTORY = 'docs/' # Generated HTML file folder (www root for Azure Web App)
 TEMPLATES_DIRECTORY = 'templates/' # Jinja2 HTML Templates directory
 
-# Main program
-year = datetime.datetime.now().strftime("%Y")
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB START - CACI NS Blog Static Site Generator\n')
 
-# Process blog posts from Posts folder
-POSTS = {}
-# Select Posts (Folder) within local repo and reverse-sort (newest Post at the top of the Homepage)
-try:
- posts_files = os.listdir('posts')
- posts_files.sort(reverse=True)
- for post_md_filename in posts_files:
-  with open('posts/' + post_md_filename, 'r', encoding='utf-8') as f:
-   POSTS[post_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
-except Exception as e:
- # Failed to attach to specified Posts (Folder) within repo
- print(' Enumerating Posts... Failed [' + str(e).split('.')[0] + ']')
+# Functions
+# Generate HTML pagefile from Jinja2 template
+def html_page_create(output_dir, jinja2_templates_dir, jinja2_template_file, jinja2_replacements, page_type='WebSite', page_description=SEO_DESCRIPTION, page_route='/', page_name='index.html'):
+    '''Saves processed HTML file in output_dir as index.html within /page_route directory (so becomes http://website.com/page_route/)
+    Returns: Saves HTML file to disk for Jinja2-processed dict jinja2_replacements replaced for HTML values
+    '''
+    try:
+        # Initialise variables
+        seo = {'url': SITE_URL, 'title': SEO_NAME, 'page_title': SEO_NAME, 'name': SEO_NAME, 'type': page_type, 'description': page_description, 'image': SEO_CARD_IMAGE}
+        # Process page-specific SEO tags
+        if(page_route != '/'):
+            # Process non-homepage SEO
+            seo['url'] = SITE_URL + page_route
+            if(page_type == 'Article'):
+                # Process Blog-specific SEO
+                seo['page_title'] = jinja2_replacements['post']['title'] + ' - ' + seo['title']
+                seo['title'] = jinja2_replacements['post']['title']
+                seo['image'] = jinja2_replacements['post']['hero_image']
+                seo['description'] = re.findall('([a-zA-Z0-9\-\(\),;:\'\s\./]{1,})', jinja2_replacements['post']['summary'], re.MULTILINE)[0][:200]
+            else:
+                # Process website pages (non-homepage)-specific SEO
+                seo['page_title'] = seo['title'] + ' - ' + page_route.split('/')[1].replace('-',' ').title()
+                seo['title'] = seo['title'] + ' ' + page_route.split('/')[1].replace('-',' ').title()
 
-# Process blog pages from Pages folder
-PAGES = {}
-# Select Pages (Folder) within local repo
-try:
- for page_md_filename in os.listdir('pages'):
-  with open('pages/' + page_md_filename, 'r', encoding='utf-8') as f:
-   PAGES[page_md_filename] = markdown(f.read(), extras=['metadata', 'tables'])
-except Exception as e:
- # Failed to attach to specified Pages (Folder) within repo
- print(' Enumerating Pages... Failed [' + str(e).split('.')[0] + ']')
+        # Load jinja2_template_file as Jinja2 template
+        template_env = Environment(loader=FileSystemLoader(jinja2_templates_dir), trim_blocks=True, lstrip_blocks=True)
+        template_file = template_env.get_template(jinja2_template_file)
+        # Render Jinja2 HTML file
+        template_html = template_file.render({**jinja2_replacements, 'seo': seo, 'year': datetime.datetime.now().strftime('%Y')})
 
-# Process default SEO tags
-SEO = {
- 'url': 'https://caci-ns.github.io',
- 'name': 'CACI Network Services Blog',
- 'title': 'CACI Network Services Blog',
- 'description': 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance',
- 'type': 'WebSite',
- 'image': 'https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png'
-}
+        # (Homepage-only) Randomly inject salesbox.html interstitial after a random blog post summary card
+        if(page_route == '/'):
+            # Open salesbox.html for replacement as string
+            with open(TEMPLATES_DIRECTORY + 'salesbox.html', 'r') as f:
+                salesbox_html = f.read()
+            # Find last occurence in between heading 2 and paragraph in latter part of post
+            template_html = ('</article>\n' + salesbox_html + '\n<article class="card">').join(template_html.split('</article>\n    <article class="card">', 1))
 
-# Load Jinja2 HTML templates in
-try:
- production = Environment(loader=FileSystemLoader(TEMPLATES_DIRECTORY), trim_blocks=True, lstrip_blocks=True)
- home_template = production.get_template('home.html')
- post_template = production.get_template('post.html')
- page_template = production.get_template('page.html')
- categories_template = production.get_template('categories.html')
- sitemap_template = production.get_template('sitemap.xml')
- # Successful Jinja2 Template load, output to log
- print('Loading Jinja2 Blog Site Templates... Done')
-except Exception as e:
- # Failed Jinja2 Template load, output to log
- print('Loading Jinja2 Blog Site Templates... Failed [' + str(e)[:60] + ']')
+        # (Blog Post-only) Randomly inject salesbox.html interstitial after a random paragraph
+        if(page_type == 'Article'):
+            # Open salesbox.html for replacement as string
+            with open(TEMPLATES_DIRECTORY + 'salesbox.html', 'r') as f:
+                salesbox_html = f.read()
+            # Find last occurence in between heading 2 and paragraph in latter part of post
+            template_html = ('</p>\n' + salesbox_html + '\n<h2>').join(template_html.rsplit('</p>\n\n<h2>', 1))
 
-# Render Blog posts to dictionary
-render_posts = []
-render_categories = []
-print('\nRendering each Blog Post to HTML...')
-for post in POSTS:
- post_metadata = POSTS[post].metadata
- post_first_paragraph_temp = re.findall('<p>(.*)</p>', POSTS[post], re.MULTILINE)
- post_first_paragraph = re.sub('<a.*?>|</a>', '', post_first_paragraph_temp[0])
- post_images = re.findall('<img src="(.*)" alt=', POSTS[post], re.MULTILINE)
- post_data = {
-  'content': POSTS[post],
-  'title': post_metadata['title'],
-  'summary': post_first_paragraph if (len(post_first_paragraph) > 0) else POSTS[post][:400],
-  'slug': post_metadata['slug'],
-  'date': datetime.datetime.strptime(post_metadata['date'], "%Y-%m-%d %H:%M").strftime("%b %d, %Y"),
-  'date_raw': post_metadata['date'],
-  'year': post_metadata['date'][0:4],
-  'month': post_metadata['date'][5:7],
-  'day': post_metadata['date'][8:10],
-  'category': post_metadata['category'],
-  'icon': post_metadata['icon'],
-  'hero_image': 'https://caci-ns.github.io' + post_images[0] if (len(post_images) > 0) else None
- }
- # Add current post to render_posts list
- render_posts.append(post_data)
- print(' Rendered Blog Post - ' + post_metadata['title'])
- # Add current category to render_categories list (if not already present)
- if not post_data['category'] in render_categories:
-  render_categories.append(post_data['category'])
-  print('  Rendered Blog Category - ' + post_metadata['category'])
+        # Recursively create subdirectories (and sub-subdirectories... etc) for SEO-optimised page_route (slug) variables
+        file_dirs_count = page_route.count('/')
+        if(file_dirs_count > 1):
+            # Check if sub-subdirectory exists, create if not
+            if not os.path.exists(OUTPUT_DIRECTORY + page_route):
+                # Create subdirectory and sub-subdirectories if new (SEO slug)
+                os.makedirs(OUTPUT_DIRECTORY + page_route, exist_ok=True)
 
- # Output individual Blog Post page HTML files
- render_seo = SEO
- render_seo['url'] = 'https://caci-ns.github.io' + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day'] + '/' + post_data['slug'] + '.html'
- render_seo['title'] = post_data['title']
- render_seo['description'] = re.findall('([a-zA-Z0-9\-\(\),;:\'\s\.]{1,})', post_first_paragraph, re.MULTILINE)[0][:200]
- render_seo['type'] = 'Article'
- render_seo['image'] = post_data['hero_image'] if (post_data['hero_image'] is not None) else 'https://www.caci.co.uk/wp-content/uploads/2021/05/CACI-logo.png'
- post_html = post_template.render(post=post_data, seo=render_seo, year=year, page_title=post_data['title'] + ' - CACI/CD Network Services Blog')
- try:
-  # Create new category/year/month/day/ (SEO URL) folders Posts entries as subfolders
-  post_page_directory = OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day']
-  # Create category SEO directory
-  if not os.path.exists(OUTPUT_DIRECTORY + '/' + post_data['category']):
-   os.mkdir(OUTPUT_DIRECTORY + '/' + post_data['category'])
-  # Create category/year SEO directory
-  if not os.path.exists(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year']):
-   os.mkdir(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'])
-  # Create category/year/month SEO directory
-  if not os.path.exists(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month']):
-   os.mkdir(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'])
-  # Create category/year/month/day SEO directory
-  if not os.path.exists(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day']):
-   os.mkdir(OUTPUT_DIRECTORY + '/' + post_data['category'] + '/' + post_data['year'] + '/' + post_data['month'] + '/' + post_data['day'])
-  # Write Blog Post HTML page to the new category/year/month/day/ SEO directory
-  with open(post_page_directory + '/' + post_data['slug'] + '.html', 'w', encoding='utf-8') as file:
-   file.write(post_html)
-  # Successfully rendered Blog Post pages, output to log
-  print('  Rendering Blog Post HTML page... Done')
- except Exception as e:
-  # Failed to render Blog Post pages, output to log
-  print('  Rendering Blog Post HTML page... Failed [' + str(e)[:100] + ']')
+        # Write rendered HTML file to disk at page_route location in output_dir
+        with open(output_dir + page_route + '/' + page_name, 'w', encoding='utf-8') as file:
+            file.write(template_html)
+        
+        # Return success
+        return True
+    except Exception as e:
+        # Print error to screen
+        print('WARN - HTML Page Create Error - ' + str(e)[:500])
 
-# Render Pages to dictionary
-render_pages = []
-print('\nRendering each Blog Page to HTML...')
-for page in PAGES:
- page_metadata = PAGES[page].metadata
- page_first_paragraph = re.findall('<p>(.*)</p>', PAGES[page], re.MULTILINE)
- page_data = {
-  'content': PAGES[page],
-  'title': page_metadata['title'],
-  'permalink': page_metadata['permalink']
- }
- # Add current page to render_pages list
- render_pages.append(page_data)
- print(' Rendered Blog Page - ' + page_metadata['title'])
+        # Return failure
+        return False
 
- # Output individual Blog Page HTML files
- render_seo = SEO
- render_seo['url'] = 'https://caci-ns.github.io' + page_data['permalink']
- render_seo['title'] = page_data['title'] + ' - CACI Network Services Blog'
- render_seo['description'] = re.findall('([a-zA-Z0-9\-\(\),\'\s\.]{1,})', page_first_paragraph[0], re.MULTILINE)[0][:200]
- render_seo['type'] = 'WebSite'
- page_html = page_template.render(page=page_data, year=year, seo=render_seo, page_title=page_data['title'] + ' - CACI/CD Network Services Blog')
- try:
-  # Create new <page_name>/ (SEO URL) folder
-  page_page_directory = OUTPUT_DIRECTORY + page_data['permalink']
-  # Create <page_name> SEO directory
-  if not os.path.exists(page_page_directory):
-   os.mkdir(page_page_directory)
-  # Write Blog Post HTML page to the new category/year/month/day/ SEO directory
-  with open(page_page_directory + '/index.html', 'w', encoding='utf-8') as file:
-   file.write(page_html)
-  # Successfully rendered Blog Pages, output to log
-  print('  Rendering Blog Page HTML pages... Done')
- except Exception as e:
-  # Failed to render Blog Pages, output to log
-  print('  Rendering Blog Page HTML pages... Failed [' + str(e)[:100] + ']')
 
-# Output Blog home page HTML file
-render_seo = SEO
-render_seo['url'] = 'https://caci-ns.github.io'
-render_seo['title'] = 'CACI Network Services Blog'
-render_seo['type'] = 'WebSite'
-render_seo['description'] = 'Expert consultants in your Networking, Cloud, IT Infrastructure, DevOps and Automation challenges - adept in a wide spectrum of end-to-end services from Consulting, Deployment through to Delivery Assurance'
-home_html = home_template.render(posts=render_posts, seo=render_seo, year=year, page_title='CACI Network Services Blog')
-try:
- with open(OUTPUT_DIRECTORY + 'index.html', 'w', encoding='utf-8') as file:
-  file.write(home_html)
- # Successfully rendered Blog Home page, output to log
- print('\nRendering Blog Home HTML page... Done')
-except Exception as e:
- # Failed to render Blog Home page, output to log
- print('\nRendering Blog Home HTML page... Failed [' + str(e)[:60] + ']')
+# Main
+if __name__ == '__main__':
+    # Initialise variables
+    blog_posts = {}
+    blog_posts_data = []
+    blog_categories = set()
+    sitemap_permalinks = []
+    # Output to log
+    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB START - CACI NS Blog Static Site Generator\n')
 
-# Output Blog Categories page HTML file
-render_seo = SEO
-render_seo['url'] = 'https://caci-ns.github.io/categories/'
-render_seo['title'] = 'Categories - CACI Network Services Blog'
-render_seo['type'] = 'WebSite'
-categories_html = categories_template.render(posts=render_posts, categories=render_categories, seo=render_seo, year=year, page_title='Categories - CACI Network Services Blog')
-try:
- # Create new categories/ (SEO URL) folder
- categories_page_directory = OUTPUT_DIRECTORY + 'categories'
- # Create categories SEO directory
- if not os.path.exists(categories_page_directory):
-  os.mkdir(categories_page_directory)
- with open(categories_page_directory + '/index.html', 'w', encoding='utf-8') as file:
-  file.write(categories_html)
- # Successfully rendered Blog Categories page, output to log
- print('\nRendering Blog Categories HTML page... Done')
-except Exception as e:
- # Failed to render Blog Categories page, output to log
- print('\nRendering Blog Categories HTML page... Failed [' + str(e)[:60] + ']')
+    # Blog - Process each blog post page (reverse sort: newest first, oldest last)
+    print('Rendering each Blog Post to HTML...')
+    posts_files = os.listdir('posts')
+    posts_files.sort(reverse=True)
+    for post_md_filename in posts_files:
+        with open('posts/' + post_md_filename, 'r', encoding='utf-8') as f:
+            blog_posts[post_md_filename] = markdown(f.read(), extras=['metadata', 'tables', 'fenced-code-blocks'])
+            blog_post_first_paragraph = re.sub('<a.*?>|</a>', '', re.findall('<p>(.*)</p>',  blog_posts[post_md_filename], re.MULTILINE)[0])
+            blog_post_images = re.findall('<img src="(.*)" alt=', blog_posts[post_md_filename], re.MULTILINE)
+            blog_post_data = {
+                'content': blog_posts[post_md_filename],
+                'title': blog_posts[post_md_filename].metadata['title'],
+                'summary': blog_post_first_paragraph if (len(blog_post_first_paragraph) > 0) else blog_posts[post_md_filename][:400],
+                'slug': blog_posts[post_md_filename].metadata['slug'],
+                'category': blog_posts[post_md_filename].metadata['category'],
+                'permalink': '/' + blog_posts[post_md_filename].metadata['category'] + '/' + blog_posts[post_md_filename].metadata['slug'] + '/',
+                'date': datetime.datetime.strptime(blog_posts[post_md_filename].metadata['date'], "%Y-%m-%d %H:%M").strftime("%b %d, %Y"),
+                'icon': blog_posts[post_md_filename].metadata['icon'],
+                'hero_image': SITE_URL + blog_post_images[0] if (len(blog_post_images) > 0) else SEO_CARD_IMAGE
+            }
+            # Append to blog_posts metadata for later processing
+            blog_posts_data.append(blog_post_data)
+            # Append to sitemap permalinks for later processing
+            sitemap_permalinks.append(blog_post_data['permalink'])
+            # (If unique) append to categories for later processing
+            blog_categories.add(blog_post_data['category'])
+            # Output to log
+            print(' Rendered Blog Post - ' + blog_post_data['title'])
+            html_page_create(OUTPUT_DIRECTORY, TEMPLATES_DIRECTORY, 'post.html', {'post': blog_post_data}, 'Article', SEO_DESCRIPTION, blog_post_data['permalink'])
 
-# Output Blog Sitemap XML file
-sitemap_xml = sitemap_template.render(posts=render_posts, pages=render_pages)
-try:
- with open(OUTPUT_DIRECTORY + 'sitemap.xml', 'w', encoding='utf-8') as file:
-  file.write(sitemap_xml)
- # Successfully rendered Blog Sitemap, output to log
- print('\nRendering Blog XML Sitemap... Done')
-except Exception as e:
- # Failed to render Blog Sitemap, output to log
- print('\nRendering Blog XML Sitemap... Failed [' + str(e)[:60] + ']')
+    # Blog - Process categories page
+    html_page_create(OUTPUT_DIRECTORY, TEMPLATES_DIRECTORY, 'categories.html', {'categories': blog_categories, 'posts': blog_posts_data}, 'WebSite', 'CACI brings you news, views and insights in our blog on the world of Network Infrastructure, Cloud, DevOps and Network Automation', '/categories/')
+    # Append to sitemap permalinks for later processing
+    sitemap_permalinks.append('/categories/')
+    print('\nRendering Blogs Categories page to HTML... Done')
 
-# Output log message
-print('\n' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB END - CACI NS Blog Static Site Generator')
+    # Home - Process summary blog posts page
+    html_page_create(OUTPUT_DIRECTORY, TEMPLATES_DIRECTORY, 'home.html', {'posts': blog_posts_data}, 'WebSite', 'CACI brings you news, views and insights in our blog on the world of Network Infrastructure, Cloud, DevOps and Network Automation', '/')
+    print('\nRendering Blogs Homepage to HTML... Done')
+
+    # Sitemap - Process overall XML sitemap for all pages and posts
+    html_page_create(OUTPUT_DIRECTORY, TEMPLATES_DIRECTORY, 'sitemap.xml', {'site_url': SITE_URL, 'permalinks': sitemap_permalinks}, 'WebSite', SEO_DESCRIPTION, '/', 'sitemap.xml')
+    print('\nRendering Sitemap to XML... Done')
+
+    # Output to log
+    print('\n' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' JOB END - CACI NS Blog Static Site Generator')
