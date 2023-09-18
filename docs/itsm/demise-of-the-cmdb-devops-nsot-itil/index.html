@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Demise of the CMDB - Network Source of Truth killed the ITIL Star - CACI Network Services Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="For years, the Configuration Management Database (CMDB) has been an integral part of IT Service Management (ITSM) for organisations. It has been the go-to tool for managing the Configuration Items (CI">
+  <meta name="author" content="CACI Network Services">
+  <meta name="robots" content="index,follow">
+  <!-- Picnic CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" type="text/css">
+  <link rel="stylesheet" href="/site.css" type="text/css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- Migration Canonical -->
+  <link rel="canonical" href="https://caci-ns.github.io/itsm/demise-of-the-cmdb-devops-nsot-itil">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <!-- Open Graph -->
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Demise of the CMDB - Network Source of Truth killed the ITIL Star">
+  <meta property="og:description" content="For years, the Configuration Management Database (CMDB) has been an integral part of IT Service Management (ITSM) for organisations. It has been the go-to tool for managing the Configuration Items (CI">
+  <meta property="og:image" content="https://caci-ns.github.io/img/devops-vs-itil.jpg">
+  <meta property="og:url" content="https://caci-ns.github.io/itsm/demise-of-the-cmdb-devops-nsot-itil/">
+  <meta property="og:site_name" content="CACI Network Services Blog">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Demise of the CMDB - Network Source of Truth killed the ITIL Star">
+  <meta name="twitter:url" content="https://caci-ns.github.io/itsm/demise-of-the-cmdb-devops-nsot-itil/">
+  <meta name="twitter:image" content="https://caci-ns.github.io/img/devops-vs-itil.jpg">
+  <meta name="twitter:description" content="For years, the Configuration Management Database (CMDB) has been an integral part of IT Service Management (ITSM) for organisations. It has been the go-to tool for managing the Configuration Items (CI">
+  <meta name="twitter:site" content="@caci_ns">
+  <meta name="twitter:creator" content="@caci_ns">
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","description":"For years, the Configuration Management Database (CMDB) has been an integral part of IT Service Management (ITSM) for organisations. It has been the go-to tool for managing the Configuration Items (CI","headline":"Demise of the CMDB - Network Source of Truth killed the ITIL Star","name":"CACI Network Services Blog","url":"https://caci-ns.github.io/itsm/demise-of-the-cmdb-devops-nsot-itil/"}</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMSMNQKWSJ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XMSMNQKWSJ');
+  </script>
+ </head>
+ <body>
+  <nav class="transparent">
+   <a href="/" class="brand"><span>CACI Network Services</span></a><input id="bmenu" type="checkbox" class="show">
+   <label for="bmenu" class="burger toggle pseudo button">menu</label>
+   <div class="menu">
+    <a href="https://github.com/CACI-NS" target="_blank" class="pseudo button">GitHub</a>
+    <a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" class="pseudo button">LinkedIn</a>
+    <a href="/categories/" class="pseudo button">Categories</a>
+    <a href="https://info.caci.co.uk/contact-us-network-services" target="_blank" class="button">Contact Us</a>
+   </div>
+  </nav>
+  <main>
+   <header class="hero">
+    <div class="content">
+     <h1>Demise of the CMDB - Network Source of Truth killed the ITIL Star</h1>
+    </div>
+   </header>
+   <div id="content" class="visual flex one">
+    <p class="info">
+     <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Jun 16, 2023</span>
+     <span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;itsm</span>
+     <span><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;<a href="https://twitter.com/caci_ns">Twitter</a></span>
+     <span><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/CACI-NS">GitHub</a></span>
+     <span><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<a href="mailto:info@caci.co.uk?subject=Help%20from%20Network%20Services">info@caci.co.uk</a></span>
+    </p>
+    <p>For years, the Configuration Management Database (CMDB) has been an integral part of IT Service Management (ITSM) for organisations. It has been the go-to tool for managing the Configuration Items (CI) of an organisation's IT environment, including hardware, software, and relationships between them. Indeed, this is to the extent that most people raising Change Requests even call them "CIs" without necessarily knowing what that stands for. But no longer.</p>
+
+<p><img src="/img/devops-vs-itil.jpg" alt="DevOps is greater than ITIL" /></p>
+
+<p>In recent times, the rise of DevOps practices - such as Network Source of Truth (NSoT), Service Bus, Event-driven Architecture and Continuous Integration/Continuous Deployment (CI/CD) have led to a decline in the use of the CMDB and IT Infrastructure Library (ITIL) practices in general. We'll discuss why the CMDB is becoming less relevant as organisations mature their DevOps Journey, and contrast some of the disadvantages of the CMDB when compared to the NSoT.</p>
+
+<h2>The CMDB is Dead; long live the Source of Truth</h2>
+
+<p>The traditional CMDB model, as mentioned above, is used to manage Configuration Items, track Changes, and support key ITIL processes such as Incident Management, Problem Management and Capacity Management. Sadly, it also dates from a time when many of these were directly correlated with <em>physical</em> assets - the Baremetal Server; the Office Printer; the Desktop PC - and so doesn't deal well with logical or conceptual models prevalent in Modern IT Workloads - Nested Virtualisation, Container Network Layers, Side Car Proxies and so on.</p>
+
+<p>CMDB's rigid Data Model and legacy Data Structure has opened the door to a series of contenders within the space, largely grouped together under the umbrella of "Source of Truth", some notable examples in the NetDevOps and DevOps spaces being:</p>
+
+<ul>
+<li><a href="https://netbox.dev">NetBox</a></li>
+<li><a href="https://ralph.allegro.tech">Ralph</a></li>
+<li><a href="https://maas.io">MAAS</a></li>
+</ul>
+
+<p>Instead of CMDBs, many organisations are now turning to Source of Truth practices. This approach aims to simplify Configuration Management by focusing on a single source of information — the “source of truth”. This Source of Truth is often a repository or database used to store configuration data for an organisation's IT environment.</p>
+<article class="card salesbox">
+ <i class="icon fa fa-comments" aria-hidden="true"></i>
+ <section>
+  <h3>Talk to our Experts</h3>
+  <p>Our in-house experts have architected, designed, built and automated some of the UK's largest Enterprise Networks and Data Centres. We've probably:</p>
+  <ul>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Networked it</li>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Designed it</li>
+   <li><i class="tick fa fa-check" aria-hidden="true"></i>&nbsp;Automated it</li>
+  </ul>
+  <p class="cta"><a href="https://info.caci.co.uk/contact-us-network-services" class="button">Ask us how</a></p>
+ </section>
+</article>
+<h2>Source of Truth is a DevOps Practice</h2>
+
+<p>The key "why" behind all this can be easily summarised when contrasting the strengths and weaknesses of the CMDB against the NSoT further. In short, Source of Truth is a DevOps practice that seeks to simplify Configuration Management by listing all Configuration Items and their relationships in a single location. This one version of truth can then be used for Deployment Automation, Infrastructure Management, and much more. Another key attribute of the SoT is the usage of data-driven, structured Data Models such as YANG, which naturally integrates with well-used DevOps Data Structures such as YAML and JSON, for frictionless flow between ITSM process and the intended Infrastructure Outcome required.</p>
+
+<table>
+<thead>
+<tr>
+  <th>CMDB Approach</th>
+  <th>NSoT Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>- Cumbersome, semi-structured and manual GUI-driven data input</td>
+  <td>+ DevOps-native Structured Data YAML, JSON and CSV data input</td>
+</tr>
+<tr>
+  <td>- Static assumptions around physical world constraints and data relationships</td>
+  <td>+ Dynamic codification of logical or physical data relationships via YANG</td>
+</tr>
+<tr>
+  <td>- Rigidly aligned to static ITIL process definitions</td>
+  <td>+ Loosely coupled to DevOps process guardrails</td>
+</tr>
+<tr>
+  <td>- Typically driven through human intervention from Configuration Engineers</td>
+  <td>+ Typically driven via API interaction with other Systems, Managers and Controllers</td>
+</tr>
+<tr>
+  <td>- Normally present as part of a monolithic, costly ITSM system</td>
+  <td>+ Normally present as either FOSS or microservices-based modules</td>
+</tr>
+<tr>
+  <td>- Designed for human interaction in mind with limited automation opportunities</td>
+  <td>+ Designed for Automation in mind with expected third-party System Integrations</td>
+</tr>
+<tr>
+  <td>- No or limited integration possible with IaC tooling and frameworks</td>
+  <td>+ The bedrock of any well-formed CI/CD Pipeline or IaC framework deployment</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Integration in the age of disaggregation</h2>
+
+<p>Increasingly we see IT Departments stretched with their ITIL-based approaches and ITSM Systems which were designed for singular, homogenous deployments of IT Network Infrastructure within the confines of the on-premises Data Centre - unable to cope as increasing amounts of their Application Workload estate migrates off-premises into the various Public Cloud PaaS, SaaS and Hybrid Cloud models of today. As <a href="https://www.caci.co.uk/services/network-infrastructure-consulting/">Network Consultants</a> and <a href="https://www.caci.co.uk/services/network-infrastructure-consulting/">Deployment Engineers</a>, we see first-hand the issues that CMDB-based approaches create, and frustrations throughout. Contrast this with a NSoT-led approach where we might instead see the ability to:</p>
+
+<ul>
+<li>Simplify Configuration Management
+<ul>
+<li>By using a single source of truth, organisations can avoid the complexity and cost of managing multiple CMDBs across their Hybrid IT Network, Compute, Storage and Application Estate</li>
+</ul></li>
+<li>Improve collaboration
+<ul>
+<li>Using a central repository for configuration data helps improve collaboration between Development and Operations teams (i.e. this is why they call it <em>DevOps</em>)</li>
+</ul></li>
+<li>Enable automation
+<ul>
+<li>With a centralised source of configuration data, it becomes easier to automate repetitive tasks such as Deployment and Testing, freeing up valuable Development and Operations resource time away from undifferentiated heavy lifting tasks</li>
+</ul></li>
+<li>Facilitate auditing and compliance
+<ul>
+<li>A centralised repository of Configuration Data also makes it easier to track changes and ensure compliance with IT Security Standards such as SOC2, HIPAA, NIST, PCI-DSS, CESG and DORA</li>
+</ul></li>
+</ul>
+
+<h2>Bolster your Configuration Management journey</h2>
+
+<p>As well as a strong heritage in <a href="https://www.caci.co.uk/services/network-infrastructure-consulting/">Network Infrastructure Engineering and Consulting</a>, we have developed a strong set of <a href="https://www.caci.co.uk/services/data-management/">ITSM Consultants</a> available to help with your CMDB Migration programmes - across the spectrum from Service Design, Project and Programme Management and through to Data and Solution Architecture. <a href="https://www.caci.co.uk/contact/#contact-form">Let us help</a> and see how we can unlock the value of the CI data you have to bring you closer to the point of Application Observability over just plain Asset Visibility.</p>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="flex one two-500 three-800">
+    <div>
+     <h4>LOCATIONS</h4>
+     <ul>
+      <li><a href="https://goo.gl/maps/ackM7R4rcRLi1jZt5">Kensington</a></li>
+      <li><a href="https://goo.gl/maps/m2HtWPFPsLzbQY3H9">Bristol</a></li>
+      <li><a href="https://goo.gl/maps/oWHbn282epon5HVy5">Cardiff</a></li>
+      <li><a href="https://goo.gl/maps/oSjybin5oxbctRpZ8">Cheltenham</a></li>
+      <li><A href="https://goo.gl/maps/UdNyMDvy7nvJ7L3S9">Manchester</a></li>
+      <li><a href="https://goo.gl/maps/5gFHCAFgSz9Fmkv1A">Richmond</a></li>
+      <li><a href="https://goo.gl/maps/4VpyCh5g8UwELSeCA">York</a></li>
+     </ul>
+    </div>
+    <div>
+     <h4>COMPANY</h4>
+     <ul>
+      <li><a href="https://www.caci.co.uk/legal/">Legal</a></li>
+      <li><a href="https://www.caci.co.uk/accessibility/">Accessibility</a></li>
+      <li><a href="https://www.caci.co.uk/data-privacy/">Data & Privacy</a></li>
+      <li><a href="https://www.caci.co.uk/uk-tax/">UK Tax</a></li>
+      <li><a href="https://www.caci.co.uk/environmental-policy/">Environmental Policy</a></li>
+      <li><a href="https://www.caci.co.uk/gender-pay-gap/">Gender Pay Gap</a></li>
+      <li><a href="https://www.caci.co.uk/modern-slavery/">Modern Slavery</a></li>
+      <li><a href="https://www.caci.co.uk/supplier-code-of-conduct/">Supplier Code of Conduct</a></li>
+     </ul>
+    </div>
+    <div class="brandfooter">
+     <a href="/" title="CACI Network Services">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="74" height="32" viewBox="0 0 333.871 145.373">
+       <g transform="translate(-92.188 -48.008)">
+        <path fill="#ffffff" d="M192.064,49.831l-.049,37.747c-.146,1.463-1.284,1.634-1.474.087-1.447-20.978-26.075-40.5-49.175-32.127-27.559,9.99-31.348,40.358-28.357,63.792,1.186,9.287,3.726,17.741,10.145,25.668,6.451,7.976,15.3,13.3,26.034,14.232,17.453,1.5,33.025-6.53,42.695-20.086.252-.366,1.067.19.953.421-10.769,24.257-45,34.936-70.376,20.243-33.2-19.222-38.686-59.089-18.446-88.155,16.65-23.923,50.931-30.393,77.652-16.194,4.033,2.141,6.967-2.358,8.98-5.637Zm219.61,105.3c0,5.6,10.041,6.665,13.377,6.6v2.521H379.123v-2.521c2.741.062,13.993-1,13.993-6.6V58.192c0-7.577-12.467-6.663-13.993-6.937V48.726H425.05v2.532c-1.52.274-13.377-.784-13.377,6.937Zm-35.28-105.3-.052,37.747c-.155,1.463-1.292,1.634-1.482.087-1.436-20.978-26.067-40.5-49.167-32.127-27.557,9.99-31.351,40.355-28.36,63.792,1.189,9.287,3.732,17.741,10.144,25.668,6.456,7.976,15.3,13.3,26.031,14.232,17.456,1.5,33.028-6.53,42.695-20.086.252-.366,1.075.19.961.421-10.78,24.257-45,34.936-70.382,20.243-33.2-19.222-38.684-59.089-18.438-88.155C304.991,47.733,339.278,41.26,366,55.459c4.027,2.141,6.956-2.358,8.977-5.637Z"></path>
+        <path fill="#ffffff" d="M776.969,127.956l16.4-39.351,17.442,39.351Zm68.645,37.452L798.156,57.523,750.7,165.258c-1.656,3.064-3.767,4.247-7.447,5.471v1.748l30.569.016v-1.761c-6.481-.991-14.245-1.921-11.86-8.818l11.881-26.444.033-.1H814.1l.035.076L826.3,163.435c2.583,6.386-7.669,7.306-12.324,7.3V172.5l42.13-.024v-1.824c-2.583,0-8.055-.079-10.489-5.246" transform="translate(-559.561 -8.178)"></path>
+        <path fill="#ed1b2d" d="M139.7,1003.565H466.9v11.072H139.7Z" transform="translate(-40.836 -821.257)"></path>
+       </g>
+      </svg>
+     </a>
+     <p>&copy; 2023 CACI Limited. All rights reserved.<p>
+     <p class="disclaimer">CACI Limited (Registered number 01649776) is registered in England and Wales with its registered office at CACI House, Avonmore Road, London, W14 8TS.</p>
+     <p class="socials"><a href="https://github.com/CACI-NS" target="_blank" title="GitHub"><i class="fa fa-2x fa-github" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/caci_ns" target="_blank" title="Twitter"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/company/caci-ltd/" target="_blank" title="LinkedIn"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a></p>
+    </div>
+   </div>
+  </footer>
+  <!-- JQuery JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/site.js"></script>
+ </body>
+</html>

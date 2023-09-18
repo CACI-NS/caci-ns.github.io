@@ -143,6 +143,6 @@ But does give some food for thought on the impact that a seemingly invisible par
 ## Need help with your own three-part DNS Murder Mystery?
 At [CACI Network Services](https://www.caci.co.uk/services/cloud-infrastructure/) we're well practiced in going full-blown [Poirot](https://en.wikipedia.org/wiki/Hercule_Poirot) on a variety of DNS, Network and Cloud murder mystery investigations. We've completed so many we think we're in for a shot with being the guest stars on the next Midsomer Murders.
 
-In the meantime, if you'd like us to keep go all [Pink Panther](https://en.wikipedia.org/wiki/The_Pink_Panther) on your very own Infrastructure Conundrum, we're all (pink) ears -  [get in touch](/contact/) and let us help you go from Inspector Clouseau to clue-solved.
+In the meantime, if you'd like us to keep go all [Pink Panther](https://en.wikipedia.org/wiki/The_Pink_Panther) on your very own Infrastructure Conundrum, we're all (pink) ears -  [get in touch](https://info.caci.co.uk/contact-us-network-services) and let us help you go from Inspector Clouseau to clue-solved.
 
 And whatever you do, _don't_ start humming the [Pink Panther theme tune](https://www.youtube.com/watch?v=HhHwnrlZRus) in your head, you'll never get it out... Sorry. No really. Sorry.
